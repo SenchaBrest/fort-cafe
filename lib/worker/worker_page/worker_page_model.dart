@@ -25,6 +25,8 @@ class WorkerPageModel extends FlutterFlowModel<WorkerPageWidget> {
   TabController? tabBarController;
   int get tabBarCurrentIndex =>
       tabBarController != null ? tabBarController!.index : 0;
+  int get tabBarPreviousIndex =>
+      tabBarController != null ? tabBarController!.previousIndex : 0;
 
   // Model for tab1 component.
   late Tab1Model tab1Model;
