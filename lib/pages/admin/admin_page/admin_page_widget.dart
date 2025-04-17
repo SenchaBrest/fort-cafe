@@ -245,19 +245,58 @@ class _AdminPageWidgetState extends State<AdminPageWidget>
                                                     (categoryIndex) {
                                                   final categoryItem =
                                                       category[categoryIndex];
-                                                  return Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
+                                                  return Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .stretch,
+                                                    children: [
+                                                      Align(
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                0.0, 0.0),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      5.0),
+                                                          child: Text(
+                                                            categoryItem,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Inter',
+                                                                  fontSize:
+                                                                      24.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Padding(
+                                                        padding: EdgeInsetsDirectional
                                                             .fromSTEB(
                                                                 valueOrDefault<
                                                                     double>(
                                                                   (double
                                                                       width) {
-                                                                    return width >
+                                                                    return width <
                                                                             480.0
-                                                                        ? (width -
-                                                                                480.0) /
-                                                                            2
+                                                                        ? (width >= 133.0 &&
+                                                                                width < 240.0)
+                                                                            ? (width - 120.0) / 2
+                                                                            : (width >= 240.0 && width < 360.0)
+                                                                                ? (width - 240.0) / 4
+                                                                                : (width >= 360.0)
+                                                                                    ? (width - 360.0) / 6
+                                                                                    : 0.0
                                                                         : 0.0;
                                                                   }(MediaQuery.sizeOf(
                                                                           context)
@@ -269,11 +308,16 @@ class _AdminPageWidgetState extends State<AdminPageWidget>
                                                                     double>(
                                                                   (double
                                                                       width) {
-                                                                    return width >
+                                                                    return width <
                                                                             480.0
-                                                                        ? (width -
-                                                                                480.0) /
-                                                                            2
+                                                                        ? (width >= 133.0 &&
+                                                                                width < 240.0)
+                                                                            ? (width - 120.0) / 2
+                                                                            : (width >= 240.0 && width < 360.0)
+                                                                                ? (width - 240.0) / 4
+                                                                                : (width >= 360.0)
+                                                                                    ? (width - 360.0) / 6
+                                                                                    : 0.0
                                                                         : 0.0;
                                                                   }(MediaQuery.sizeOf(
                                                                           context)
@@ -281,322 +325,241 @@ class _AdminPageWidgetState extends State<AdminPageWidget>
                                                                   0.0,
                                                                 ),
                                                                 0.0),
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .stretch,
-                                                      children: [
-                                                        Align(
-                                                          alignment:
-                                                              AlignmentDirectional(
-                                                                  0.0, 0.0),
-                                                          child: Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        5.0),
-                                                            child: Text(
+                                                        child: FutureBuilder<
+                                                            List<ItemsRow>>(
+                                                          future: ItemsTable()
+                                                              .queryRows(
+                                                            queryFn: (q) =>
+                                                                q.eqOrNull(
+                                                              'category',
                                                               categoryItem,
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Inter',
-                                                                    fontSize:
-                                                                        24.0,
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                  ),
                                                             ),
                                                           ),
-                                                        ),
-                                                        Padding(
-                                                          padding: EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  valueOrDefault<
-                                                                      double>(
-                                                                    (double
-                                                                        width) {
-                                                                      return width <
-                                                                              480.0
-                                                                          ? (width >= 133.0 && width < 240.0)
-                                                                              ? (width - 120.0) / 2
-                                                                              : (width >= 240.0 && width < 360.0)
-                                                                                  ? (width - 240.0) / 4
-                                                                                  : (width >= 360.0)
-                                                                                      ? (width - 360.0) / 6
-                                                                                      : 0.0
-                                                                          : 0.0;
-                                                                    }(MediaQuery.sizeOf(
-                                                                            context)
-                                                                        .width),
-                                                                    0.0,
-                                                                  ),
-                                                                  0.0,
-                                                                  valueOrDefault<
-                                                                      double>(
-                                                                    (double
-                                                                        width) {
-                                                                      return width <
-                                                                              480.0
-                                                                          ? (width >= 133.0 && width < 240.0)
-                                                                              ? (width - 120.0) / 2
-                                                                              : (width >= 240.0 && width < 360.0)
-                                                                                  ? (width - 240.0) / 4
-                                                                                  : (width >= 360.0)
-                                                                                      ? (width - 360.0) / 6
-                                                                                      : 0.0
-                                                                          : 0.0;
-                                                                    }(MediaQuery.sizeOf(
-                                                                            context)
-                                                                        .width),
-                                                                    0.0,
-                                                                  ),
-                                                                  0.0),
-                                                          child: FutureBuilder<
-                                                              List<ItemsRow>>(
-                                                            future: ItemsTable()
-                                                                .queryRows(
-                                                              queryFn: (q) =>
-                                                                  q.eqOrNull(
-                                                                'category',
-                                                                categoryItem,
-                                                              ),
-                                                            ),
-                                                            builder: (context,
-                                                                snapshot) {
-                                                              // Customize what your widget looks like when it's loading.
-                                                              if (!snapshot
-                                                                  .hasData) {
-                                                                return Center(
+                                                          builder: (context,
+                                                              snapshot) {
+                                                            // Customize what your widget looks like when it's loading.
+                                                            if (!snapshot
+                                                                .hasData) {
+                                                              return Center(
+                                                                child: SizedBox(
+                                                                  width: 15.0,
+                                                                  height: 15.0,
                                                                   child:
-                                                                      SizedBox(
-                                                                    width: 15.0,
-                                                                    height:
-                                                                        15.0,
+                                                                      SpinKitThreeBounce(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primary,
+                                                                    size: 15.0,
+                                                                  ),
+                                                                ),
+                                                              );
+                                                            }
+                                                            List<ItemsRow>
+                                                                wrapItemsRowList =
+                                                                snapshot.data!;
+
+                                                            return Wrap(
+                                                              spacing: (double
+                                                                  width) {
+                                                                return width <
+                                                                        480.0
+                                                                    ? (width >= 133.0 &&
+                                                                            width <
+                                                                                240.0)
+                                                                        ? (width -
+                                                                                120.0) /
+                                                                            2
+                                                                        : (width >= 240.0 &&
+                                                                                width < 360.0)
+                                                                            ? (width - 240.0) / 4
+                                                                            : (width >= 360.0)
+                                                                                ? (width - 360.0) / 6
+                                                                                : 0.0
+                                                                    : 0.0;
+                                                              }(MediaQuery.sizeOf(
+                                                                      context)
+                                                                  .width),
+                                                              runSpacing: 0.0,
+                                                              alignment:
+                                                                  WrapAlignment
+                                                                      .start,
+                                                              crossAxisAlignment:
+                                                                  WrapCrossAlignment
+                                                                      .start,
+                                                              direction: Axis
+                                                                  .horizontal,
+                                                              runAlignment:
+                                                                  WrapAlignment
+                                                                      .start,
+                                                              verticalDirection:
+                                                                  VerticalDirection
+                                                                      .down,
+                                                              clipBehavior:
+                                                                  Clip.none,
+                                                              children: List.generate(
+                                                                  wrapItemsRowList
+                                                                      .length,
+                                                                  (wrapIndex) {
+                                                                final wrapItemsRow =
+                                                                    wrapItemsRowList[
+                                                                        wrapIndex];
+                                                                return Container(
+                                                                  width: 120.0,
+                                                                  height: 121.0,
+                                                                  decoration:
+                                                                      BoxDecoration(),
+                                                                  child:
+                                                                      wrapWithModel(
+                                                                    model: _model
+                                                                        .itemEditModels
+                                                                        .getModel(
+                                                                      wrapItemsRow
+                                                                          .id,
+                                                                      wrapIndex,
+                                                                    ),
+                                                                    updateCallback: () =>
+                                                                        safeSetState(
+                                                                            () {}),
+                                                                    updateOnChange:
+                                                                        true,
                                                                     child:
-                                                                        SpinKitThreeBounce(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primary,
-                                                                      size:
-                                                                          15.0,
+                                                                        ItemEditWidget(
+                                                                      key: Key(
+                                                                        'Keypez_${wrapItemsRow.id}',
+                                                                      ),
+                                                                      imageUrl:
+                                                                          wrapItemsRow
+                                                                              .imageUrl,
+                                                                      name: wrapItemsRow
+                                                                          .name,
+                                                                      price: wrapItemsRow
+                                                                          .price,
+                                                                      isActive:
+                                                                          wrapItemsRow
+                                                                              .isActive,
+                                                                      id: wrapItemsRow
+                                                                          .id,
+                                                                      count: wrapItemsRow
+                                                                          .count,
+                                                                      remove:
+                                                                          () async {
+                                                                        await actions
+                                                                            .hapticFeedbackForTelegramByType(
+                                                                          'impact_light',
+                                                                        );
+                                                                        await showModalBottomSheet(
+                                                                          isScrollControlled:
+                                                                              true,
+                                                                          backgroundColor:
+                                                                              FlutterFlowTheme.of(context).primaryBackground,
+                                                                          enableDrag:
+                                                                              false,
+                                                                          context:
+                                                                              context,
+                                                                          builder:
+                                                                              (context) {
+                                                                            return GestureDetector(
+                                                                              onTap: () {
+                                                                                FocusScope.of(context).unfocus();
+                                                                                FocusManager.instance.primaryFocus?.unfocus();
+                                                                              },
+                                                                              child: Padding(
+                                                                                padding: MediaQuery.viewInsetsOf(context),
+                                                                                child: Container(
+                                                                                  height: double.infinity,
+                                                                                  child: DeleteItemWidget(
+                                                                                    id: wrapItemsRow.id,
+                                                                                    name: wrapItemsRow.name,
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                            );
+                                                                          },
+                                                                        ).then((value) =>
+                                                                            safeSetState(() {}));
+
+                                                                        safeSetState(
+                                                                            () {});
+                                                                      },
+                                                                      edit:
+                                                                          () async {
+                                                                        await actions
+                                                                            .hapticFeedbackForTelegramByType(
+                                                                          'impact_light',
+                                                                        );
+                                                                        await showModalBottomSheet(
+                                                                          isScrollControlled:
+                                                                              true,
+                                                                          backgroundColor:
+                                                                              FlutterFlowTheme.of(context).primaryBackground,
+                                                                          isDismissible:
+                                                                              false,
+                                                                          enableDrag:
+                                                                              false,
+                                                                          useSafeArea:
+                                                                              true,
+                                                                          context:
+                                                                              context,
+                                                                          builder:
+                                                                              (context) {
+                                                                            return GestureDetector(
+                                                                              onTap: () {
+                                                                                FocusScope.of(context).unfocus();
+                                                                                FocusManager.instance.primaryFocus?.unfocus();
+                                                                              },
+                                                                              child: Padding(
+                                                                                padding: MediaQuery.viewInsetsOf(context),
+                                                                                child: Container(
+                                                                                  height: double.infinity,
+                                                                                  child: CreateProductWidget(
+                                                                                    categories: functions.getUniqueCategories((getJsonField(
+                                                                                                  containerGetCategoriesResponse.jsonBody,
+                                                                                                  r'''$[:]''',
+                                                                                                ) !=
+                                                                                                null
+                                                                                            ? GetCategoriesCall.allCategories(
+                                                                                                containerGetCategoriesResponse.jsonBody,
+                                                                                              )
+                                                                                            : List.generate(
+                                                                                                random_data.randomInteger(0, 0),
+                                                                                                (index) => random_data.randomString(
+                                                                                                      1,
+                                                                                                      10,
+                                                                                                      true,
+                                                                                                      false,
+                                                                                                      false,
+                                                                                                    )))
+                                                                                        ?.toList()),
+                                                                                    imageUrl: wrapItemsRow.imageUrl,
+                                                                                    count: wrapItemsRow.count,
+                                                                                    category: categoryItem,
+                                                                                    name: wrapItemsRow.name,
+                                                                                    price: wrapItemsRow.price,
+                                                                                    id: wrapItemsRow.id,
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                            );
+                                                                          },
+                                                                        ).then((value) =>
+                                                                            safeSetState(() {}));
+                                                                      },
                                                                     ),
                                                                   ),
                                                                 );
-                                                              }
-                                                              List<ItemsRow>
-                                                                  wrapItemsRowList =
-                                                                  snapshot
-                                                                      .data!;
-
-                                                              return Wrap(
-                                                                spacing: (double
-                                                                    width) {
-                                                                  return width <
-                                                                          480.0
-                                                                      ? (width >= 133.0 &&
-                                                                              width <
-                                                                                  240.0)
-                                                                          ? (width - 120.0) /
-                                                                              2
-                                                                          : (width >= 240.0 && width < 360.0)
-                                                                              ? (width - 240.0) / 4
-                                                                              : (width >= 360.0)
-                                                                                  ? (width - 360.0) / 6
-                                                                                  : 0.0
-                                                                      : 0.0;
-                                                                }(MediaQuery.sizeOf(
-                                                                        context)
-                                                                    .width),
-                                                                runSpacing: 0.0,
-                                                                alignment:
-                                                                    WrapAlignment
-                                                                        .start,
-                                                                crossAxisAlignment:
-                                                                    WrapCrossAlignment
-                                                                        .start,
-                                                                direction: Axis
-                                                                    .horizontal,
-                                                                runAlignment:
-                                                                    WrapAlignment
-                                                                        .start,
-                                                                verticalDirection:
-                                                                    VerticalDirection
-                                                                        .down,
-                                                                clipBehavior:
-                                                                    Clip.none,
-                                                                children: List.generate(
-                                                                    wrapItemsRowList
-                                                                        .length,
-                                                                    (wrapIndex) {
-                                                                  final wrapItemsRow =
-                                                                      wrapItemsRowList[
-                                                                          wrapIndex];
-                                                                  return Container(
-                                                                    width:
-                                                                        120.0,
-                                                                    height:
-                                                                        121.0,
-                                                                    decoration:
-                                                                        BoxDecoration(),
-                                                                    child:
-                                                                        wrapWithModel(
-                                                                      model: _model
-                                                                          .itemEditModels
-                                                                          .getModel(
-                                                                        wrapItemsRow
-                                                                            .id,
-                                                                        wrapIndex,
-                                                                      ),
-                                                                      updateCallback:
-                                                                          () =>
-                                                                              safeSetState(() {}),
-                                                                      updateOnChange:
-                                                                          true,
-                                                                      child:
-                                                                          ItemEditWidget(
-                                                                        key:
-                                                                            Key(
-                                                                          'Keypez_${wrapItemsRow.id}',
-                                                                        ),
-                                                                        imageUrl:
-                                                                            wrapItemsRow.imageUrl,
-                                                                        name: wrapItemsRow
-                                                                            .name,
-                                                                        price: wrapItemsRow
-                                                                            .price,
-                                                                        isActive:
-                                                                            wrapItemsRow.isActive,
-                                                                        id: wrapItemsRow
-                                                                            .id,
-                                                                        count: wrapItemsRow
-                                                                            .count,
-                                                                        remove:
-                                                                            () async {
-                                                                          await actions
-                                                                              .hapticFeedbackForTelegramByType(
-                                                                            'impact_light',
-                                                                          );
-                                                                          await showModalBottomSheet(
-                                                                            isScrollControlled:
-                                                                                true,
-                                                                            backgroundColor:
-                                                                                FlutterFlowTheme.of(context).primaryBackground,
-                                                                            enableDrag:
-                                                                                false,
-                                                                            context:
-                                                                                context,
-                                                                            builder:
-                                                                                (context) {
-                                                                              return GestureDetector(
-                                                                                onTap: () {
-                                                                                  FocusScope.of(context).unfocus();
-                                                                                  FocusManager.instance.primaryFocus?.unfocus();
-                                                                                },
-                                                                                child: Padding(
-                                                                                  padding: MediaQuery.viewInsetsOf(context),
-                                                                                  child: Container(
-                                                                                    height: double.infinity,
-                                                                                    child: DeleteItemWidget(
-                                                                                      id: wrapItemsRow.id,
-                                                                                      name: wrapItemsRow.name,
-                                                                                    ),
-                                                                                  ),
-                                                                                ),
-                                                                              );
-                                                                            },
-                                                                          ).then((value) =>
-                                                                              safeSetState(() {}));
-
-                                                                          safeSetState(
-                                                                              () {});
-                                                                        },
-                                                                        edit:
-                                                                            () async {
-                                                                          await actions
-                                                                              .hapticFeedbackForTelegramByType(
-                                                                            'impact_light',
-                                                                          );
-                                                                          await showModalBottomSheet(
-                                                                            isScrollControlled:
-                                                                                true,
-                                                                            backgroundColor:
-                                                                                FlutterFlowTheme.of(context).primaryBackground,
-                                                                            isDismissible:
-                                                                                false,
-                                                                            enableDrag:
-                                                                                false,
-                                                                            useSafeArea:
-                                                                                true,
-                                                                            context:
-                                                                                context,
-                                                                            builder:
-                                                                                (context) {
-                                                                              return GestureDetector(
-                                                                                onTap: () {
-                                                                                  FocusScope.of(context).unfocus();
-                                                                                  FocusManager.instance.primaryFocus?.unfocus();
-                                                                                },
-                                                                                child: Padding(
-                                                                                  padding: MediaQuery.viewInsetsOf(context),
-                                                                                  child: Container(
-                                                                                    height: double.infinity,
-                                                                                    child: CreateProductWidget(
-                                                                                      categories: functions.getUniqueCategories((getJsonField(
-                                                                                                    containerGetCategoriesResponse.jsonBody,
-                                                                                                    r'''$[:]''',
-                                                                                                  ) !=
-                                                                                                  null
-                                                                                              ? GetCategoriesCall.allCategories(
-                                                                                                  containerGetCategoriesResponse.jsonBody,
-                                                                                                )
-                                                                                              : List.generate(
-                                                                                                  random_data.randomInteger(0, 0),
-                                                                                                  (index) => random_data.randomString(
-                                                                                                        1,
-                                                                                                        10,
-                                                                                                        true,
-                                                                                                        false,
-                                                                                                        false,
-                                                                                                      )))
-                                                                                          ?.toList()),
-                                                                                      imageUrl: wrapItemsRow.imageUrl,
-                                                                                      count: wrapItemsRow.count,
-                                                                                      category: categoryItem,
-                                                                                      name: wrapItemsRow.name,
-                                                                                      price: wrapItemsRow.price,
-                                                                                      id: wrapItemsRow.id,
-                                                                                    ),
-                                                                                  ),
-                                                                                ),
-                                                                              );
-                                                                            },
-                                                                          ).then((value) =>
-                                                                              safeSetState(() {}));
-                                                                        },
-                                                                      ),
-                                                                    ),
-                                                                  );
-                                                                }),
-                                                              );
-                                                            },
-                                                          ),
+                                                              }),
+                                                            );
+                                                          },
                                                         ),
-                                                        Divider(
-                                                          thickness: 2.0,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .alternate,
-                                                        ),
-                                                      ],
-                                                    ),
+                                                      ),
+                                                      Divider(
+                                                        thickness: 2.0,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .alternate,
+                                                      ),
+                                                    ],
                                                   );
                                                 }),
                                               ),
@@ -819,168 +782,143 @@ class _AdminPageWidgetState extends State<AdminPageWidget>
                             ),
                           ),
                           KeepAliveWidgetWrapper(
-                            builder: (context) => Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  valueOrDefault<double>(
-                                    (double width) {
-                                      return width > 480.0
-                                          ? (width - 480.0) / 2
-                                          : 0.0;
-                                    }(MediaQuery.sizeOf(context).width),
-                                    0.0,
-                                  ),
-                                  0.0,
-                                  valueOrDefault<double>(
-                                    (double width) {
-                                      return width > 480.0
-                                          ? (width - 480.0) / 2
-                                          : 0.0;
-                                    }(MediaQuery.sizeOf(context).width),
-                                    0.0,
-                                  ),
-                                  0.0),
-                              child: FutureBuilder<List<UsersRow>>(
-                                future: (_model.requestCompleter2 ??=
-                                        Completer<List<UsersRow>>()
-                                          ..complete(UsersTable().queryRows(
-                                            queryFn: (q) => q.order('name',
-                                                ascending: true),
-                                          )))
-                                    .future,
-                                builder: (context, snapshot) {
-                                  // Customize what your widget looks like when it's loading.
-                                  if (!snapshot.hasData) {
-                                    return Center(
-                                      child: SizedBox(
-                                        width: 15.0,
-                                        height: 15.0,
-                                        child: SpinKitThreeBounce(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          size: 15.0,
+                            builder: (context) => FutureBuilder<List<UsersRow>>(
+                              future: (_model.requestCompleter2 ??=
+                                      Completer<List<UsersRow>>()
+                                        ..complete(UsersTable().queryRows(
+                                          queryFn: (q) =>
+                                              q.order('name', ascending: true),
+                                        )))
+                                  .future,
+                              builder: (context, snapshot) {
+                                // Customize what your widget looks like when it's loading.
+                                if (!snapshot.hasData) {
+                                  return Center(
+                                    child: SizedBox(
+                                      width: 15.0,
+                                      height: 15.0,
+                                      child: SpinKitThreeBounce(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        size: 15.0,
+                                      ),
+                                    ),
+                                  );
+                                }
+                                List<UsersRow> listViewUsersRowList =
+                                    snapshot.data!;
+
+                                return ListView.separated(
+                                  padding: EdgeInsets.symmetric(vertical: 5.0),
+                                  scrollDirection: Axis.vertical,
+                                  itemCount: listViewUsersRowList.length,
+                                  separatorBuilder: (_, __) =>
+                                      SizedBox(height: 5.0),
+                                  itemBuilder: (context, listViewIndex) {
+                                    final listViewUsersRow =
+                                        listViewUsersRowList[listViewIndex];
+                                    return InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        await actions
+                                            .hapticFeedbackForTelegramByType(
+                                          'impact_light',
+                                        );
+                                        await showModalBottomSheet(
+                                          isScrollControlled: true,
+                                          backgroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primaryBackground,
+                                          isDismissible: false,
+                                          enableDrag: false,
+                                          context: context,
+                                          builder: (context) {
+                                            return GestureDetector(
+                                              onTap: () {
+                                                FocusScope.of(context)
+                                                    .unfocus();
+                                                FocusManager
+                                                    .instance.primaryFocus
+                                                    ?.unfocus();
+                                              },
+                                              child: Padding(
+                                                padding:
+                                                    MediaQuery.viewInsetsOf(
+                                                        context),
+                                                child: Container(
+                                                  height: double.infinity,
+                                                  child: RoleAssignmentWidget(
+                                                    userId:
+                                                        listViewUsersRow.userId,
+                                                    userNameAndSurname:
+                                                        '${listViewUsersRow.name} ${listViewUsersRow.surname}',
+                                                  ),
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        ).then((value) => safeSetState(() {}));
+                                      },
+                                      child: Material(
+                                        color: Colors.transparent,
+                                        child: ListTile(
+                                          title: Text(
+                                            '${listViewUsersRow.name} ${listViewUsersRow.surname}',
+                                            style: FlutterFlowTheme.of(context)
+                                                .titleLarge
+                                                .override(
+                                                  fontFamily: 'Roboto',
+                                                  letterSpacing: 0.0,
+                                                ),
+                                          ),
+                                          subtitle: Text(
+                                            listViewUsersRow.role,
+                                            style: FlutterFlowTheme.of(context)
+                                                .labelMedium
+                                                .override(
+                                                  fontFamily: 'Inter',
+                                                  letterSpacing: 0.0,
+                                                ),
+                                          ),
+                                          tileColor: valueOrDefault<Color>(
+                                            () {
+                                              if (listViewUsersRow.role ==
+                                                  'user') {
+                                                return FlutterFlowTheme.of(
+                                                        context)
+                                                    .secondary;
+                                              } else if (listViewUsersRow
+                                                      .role ==
+                                                  'worker') {
+                                                return FlutterFlowTheme.of(
+                                                        context)
+                                                    .primary;
+                                              } else if (listViewUsersRow
+                                                      .role ==
+                                                  'admin') {
+                                                return Color(0xFF102C54);
+                                              } else {
+                                                return FlutterFlowTheme.of(
+                                                        context)
+                                                    .tertiary;
+                                              }
+                                            }(),
+                                            FlutterFlowTheme.of(context)
+                                                .secondary,
+                                          ),
+                                          dense: false,
+                                          contentPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  12.0, 0.0, 12.0, 0.0),
                                         ),
                                       ),
                                     );
-                                  }
-                                  List<UsersRow> listViewUsersRowList =
-                                      snapshot.data!;
-
-                                  return ListView.separated(
-                                    padding:
-                                        EdgeInsets.symmetric(vertical: 5.0),
-                                    scrollDirection: Axis.vertical,
-                                    itemCount: listViewUsersRowList.length,
-                                    separatorBuilder: (_, __) =>
-                                        SizedBox(height: 5.0),
-                                    itemBuilder: (context, listViewIndex) {
-                                      final listViewUsersRow =
-                                          listViewUsersRowList[listViewIndex];
-                                      return InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          await actions
-                                              .hapticFeedbackForTelegramByType(
-                                            'impact_light',
-                                          );
-                                          await showModalBottomSheet(
-                                            isScrollControlled: true,
-                                            backgroundColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .primaryBackground,
-                                            isDismissible: false,
-                                            enableDrag: false,
-                                            context: context,
-                                            builder: (context) {
-                                              return GestureDetector(
-                                                onTap: () {
-                                                  FocusScope.of(context)
-                                                      .unfocus();
-                                                  FocusManager
-                                                      .instance.primaryFocus
-                                                      ?.unfocus();
-                                                },
-                                                child: Padding(
-                                                  padding:
-                                                      MediaQuery.viewInsetsOf(
-                                                          context),
-                                                  child: Container(
-                                                    height: double.infinity,
-                                                    child: RoleAssignmentWidget(
-                                                      userId: listViewUsersRow
-                                                          .userId,
-                                                      userNameAndSurname:
-                                                          '${listViewUsersRow.name} ${listViewUsersRow.surname}',
-                                                    ),
-                                                  ),
-                                                ),
-                                              );
-                                            },
-                                          ).then(
-                                              (value) => safeSetState(() {}));
-                                        },
-                                        child: Material(
-                                          color: Colors.transparent,
-                                          child: ListTile(
-                                            title: Text(
-                                              '${listViewUsersRow.name} ${listViewUsersRow.surname}',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleLarge
-                                                      .override(
-                                                        fontFamily: 'Roboto',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                            ),
-                                            subtitle: Text(
-                                              listViewUsersRow.role,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .override(
-                                                        fontFamily: 'Inter',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                            ),
-                                            tileColor: valueOrDefault<Color>(
-                                              () {
-                                                if (listViewUsersRow.role ==
-                                                    'user') {
-                                                  return FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondary;
-                                                } else if (listViewUsersRow
-                                                        .role ==
-                                                    'worker') {
-                                                  return FlutterFlowTheme.of(
-                                                          context)
-                                                      .primary;
-                                                } else if (listViewUsersRow
-                                                        .role ==
-                                                    'admin') {
-                                                  return Color(0xFF102C54);
-                                                } else {
-                                                  return FlutterFlowTheme.of(
-                                                          context)
-                                                      .tertiary;
-                                                }
-                                              }(),
-                                              FlutterFlowTheme.of(context)
-                                                  .secondary,
-                                            ),
-                                            dense: false,
-                                            contentPadding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    12.0, 0.0, 12.0, 0.0),
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                  );
-                                },
-                              ),
+                                  },
+                                );
+                              },
                             ),
                           ),
                         ],
