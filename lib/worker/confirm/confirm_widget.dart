@@ -51,112 +51,130 @@ class _ConfirmWidgetState extends State<ConfirmWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.transparent,
-      ),
-      child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
-              child: Text(
-                () {
-                  if (widget.status == Status.givenAway) {
-                    return 'Отдать?';
-                  } else if (widget.status == Status.canceled) {
-                    return 'Отменить?';
-                  } else {
-                    return 'Удалить?';
-                  }
-                }(),
-                style: FlutterFlowTheme.of(context).headlineSmall.override(
-                      fontFamily: 'Roboto',
-                      letterSpacing: 0.0,
-                    ),
-              ),
-            ),
-            Spacer(),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  FFButtonWidget(
-                    onPressed: () async {
-                      Navigator.pop(context);
-                      await actions.hapticFeedbackForTelegramByType(
-                        'notification_error',
-                      );
-                    },
-                    text: 'Нет',
-                    options: FFButtonOptions(
-                      width: 120.0,
-                      height: 48.0,
-                      padding: EdgeInsets.all(8.0),
-                      iconPadding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                      textStyle:
-                          FlutterFlowTheme.of(context).titleSmall.override(
-                                fontFamily: 'Roboto',
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                letterSpacing: 0.0,
-                              ),
-                      elevation: 0.0,
-                      borderSide: BorderSide(
-                        color: FlutterFlowTheme.of(context).alternate,
-                        width: 1.0,
+    return Padding(
+      padding: EdgeInsetsDirectional.fromSTEB(
+          valueOrDefault<double>(
+            (double width) {
+              return width > 480.0 ? (width - 480.0) / 2 : 0.0;
+            }(MediaQuery.sizeOf(context).width),
+            0.0,
+          ),
+          0.0,
+          valueOrDefault<double>(
+            (double width) {
+              return width > 480.0 ? (width - 480.0) / 2 : 0.0;
+            }(MediaQuery.sizeOf(context).width),
+            0.0,
+          ),
+          0.0),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.transparent,
+        ),
+        child: Padding(
+          padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                child: Text(
+                  () {
+                    if (widget.status == Status.givenAway) {
+                      return 'Отдать?';
+                    } else if (widget.status == Status.canceled) {
+                      return 'Отменить?';
+                    } else {
+                      return 'Удалить?';
+                    }
+                  }(),
+                  style: FlutterFlowTheme.of(context).headlineSmall.override(
+                        fontFamily: 'Roboto',
+                        letterSpacing: 0.0,
                       ),
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                  ),
-                  FFButtonWidget(
-                    onPressed: () async {
-                      await OrdersTable().update(
-                        data: {
-                          'status': widget.status?.name,
-                        },
-                        matchingRows: (rows) => rows.eqOrNull(
-                          'id',
-                          widget.orderId,
+                ),
+              ),
+              Spacer(),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    FFButtonWidget(
+                      onPressed: () async {
+                        Navigator.pop(context);
+                        await actions.hapticFeedbackForTelegramByType(
+                          'notification_error',
+                        );
+                      },
+                      text: 'Нет',
+                      options: FFButtonOptions(
+                        width: 120.0,
+                        height: 48.0,
+                        padding: EdgeInsets.all(8.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        textStyle: FlutterFlowTheme.of(context)
+                            .titleSmall
+                            .override(
+                              fontFamily: 'Roboto',
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              letterSpacing: 0.0,
+                            ),
+                        elevation: 0.0,
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).alternate,
+                          width: 1.0,
                         ),
-                      );
-                      Navigator.pop(context);
-                      await actions.hapticFeedbackForTelegramByType(
-                        'notification_success',
-                      );
-                    },
-                    text: 'Да',
-                    options: FFButtonOptions(
-                      width: 120.0,
-                      height: 48.0,
-                      padding: EdgeInsets.all(8.0),
-                      iconPadding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: FlutterFlowTheme.of(context).secondary,
-                      textStyle:
-                          FlutterFlowTheme.of(context).titleSmall.override(
-                                fontFamily: 'Roboto',
-                                color: FlutterFlowTheme.of(context).info,
-                                letterSpacing: 0.0,
-                              ),
-                      elevation: 0.0,
-                      borderSide: BorderSide(
-                        color: Colors.transparent,
-                        width: 1.0,
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
-                      borderRadius: BorderRadius.circular(8.0),
                     ),
-                  ),
-                ].divide(SizedBox(width: 16.0)),
+                    FFButtonWidget(
+                      onPressed: () async {
+                        await OrdersTable().update(
+                          data: {
+                            'status': widget.status?.name,
+                          },
+                          matchingRows: (rows) => rows.eqOrNull(
+                            'id',
+                            widget.orderId,
+                          ),
+                        );
+                        Navigator.pop(context);
+                        await actions.hapticFeedbackForTelegramByType(
+                          'notification_success',
+                        );
+                      },
+                      text: 'Да',
+                      options: FFButtonOptions(
+                        width: 120.0,
+                        height: 48.0,
+                        padding: EdgeInsets.all(8.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).secondary,
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Roboto',
+                                  color: FlutterFlowTheme.of(context).info,
+                                  letterSpacing: 0.0,
+                                ),
+                        elevation: 0.0,
+                        borderSide: BorderSide(
+                          color: Colors.transparent,
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                    ),
+                  ].divide(SizedBox(width: 16.0)),
+                ),
               ),
-            ),
-          ].divide(SizedBox(height: 12.0)),
+            ].divide(SizedBox(height: 12.0)),
+          ),
         ),
       ),
     );

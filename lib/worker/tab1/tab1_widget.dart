@@ -2,10 +2,13 @@ import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import '/index.dart';
+import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'tab1_model.dart';
 export 'tab1_model.dart';
@@ -31,6 +34,20 @@ class _Tab1WidgetState extends State<Tab1Widget> {
     super.initState();
     _model = createModel(context, () => Tab1Model());
 
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await actions.unsubscribe(
+        'miniOrders',
+      );
+      await actions.subscribe(
+        'miniOrders',
+        () async {
+          safeSetState(() => _model.apiRequestCompleter = null);
+          await _model.waitForApiRequestCompleted();
+        },
+      );
+    });
+
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -43,169 +60,156 @@ class _Tab1WidgetState extends State<Tab1Widget> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<ApiCallResponse>(
-      future: GetPendingMiniOrdersCall.call(),
-      builder: (context, snapshot) {
-        // Customize what your widget looks like when it's loading.
-        if (!snapshot.hasData) {
-          return Center(
-            child: SizedBox(
-              width: 15.0,
-              height: 15.0,
-              child: SpinKitThreeBounce(
-                color: FlutterFlowTheme.of(context).primary,
-                size: 15.0,
+    return Padding(
+      padding: EdgeInsetsDirectional.fromSTEB(
+          valueOrDefault<double>(
+            (double width) {
+              return width > 480.0 ? (width - 480.0) / 2 : 0.0;
+            }(MediaQuery.sizeOf(context).width),
+            0.0,
+          ),
+          0.0,
+          valueOrDefault<double>(
+            (double width) {
+              return width > 480.0 ? (width - 480.0) / 2 : 0.0;
+            }(MediaQuery.sizeOf(context).width),
+            0.0,
+          ),
+          0.0),
+      child: FutureBuilder<ApiCallResponse>(
+        future: (_model.apiRequestCompleter ??= Completer<ApiCallResponse>()
+              ..complete(GetPendingMiniOrdersCall.call()))
+            .future,
+        builder: (context, snapshot) {
+          // Customize what your widget looks like when it's loading.
+          if (!snapshot.hasData) {
+            return Center(
+              child: SizedBox(
+                width: 15.0,
+                height: 15.0,
+                child: SpinKitThreeBounce(
+                  color: FlutterFlowTheme.of(context).primary,
+                  size: 15.0,
+                ),
               ),
-            ),
-          );
-        }
-        final containerGetPendingMiniOrdersResponse = snapshot.data!;
+            );
+          }
+          final containerGetPendingMiniOrdersResponse = snapshot.data!;
 
-        return Container(
-          decoration: BoxDecoration(),
-          child: Align(
-            alignment: AlignmentDirectional(0.0, -1.0),
-            child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-              child: FutureBuilder<ApiCallResponse>(
-                future: GetCategoriesCall.call(),
-                builder: (context, snapshot) {
-                  // Customize what your widget looks like when it's loading.
-                  if (!snapshot.hasData) {
-                    return Center(
-                      child: SizedBox(
-                        width: 15.0,
-                        height: 15.0,
-                        child: SpinKitThreeBounce(
-                          color: FlutterFlowTheme.of(context).primary,
-                          size: 15.0,
+          return Container(
+            decoration: BoxDecoration(),
+            child: Align(
+              alignment: AlignmentDirectional(0.0, -1.0),
+              child: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                child: FutureBuilder<ApiCallResponse>(
+                  future: GetCategoriesCall.call(),
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: SizedBox(
+                          width: 15.0,
+                          height: 15.0,
+                          child: SpinKitThreeBounce(
+                            color: FlutterFlowTheme.of(context).primary,
+                            size: 15.0,
+                          ),
                         ),
-                      ),
-                    );
-                  }
-                  final wrapGetCategoriesResponse = snapshot.data!;
+                      );
+                    }
+                    final wrapGetCategoriesResponse = snapshot.data!;
 
-                  return Builder(
-                    builder: (context) {
-                      final categories = functions
-                          .getUniqueCategories((getJsonField(
+                    return Builder(
+                      builder: (context) {
+                        final categories = functions
+                            .getUniqueCategories((getJsonField(
+                                          wrapGetCategoriesResponse.jsonBody,
+                                          r'''$[:]''',
+                                        ) !=
+                                        null
+                                    ? (getJsonField(
                                         wrapGetCategoriesResponse.jsonBody,
-                                        r'''$[:]''',
-                                      ) !=
-                                      null
-                                  ? (getJsonField(
-                                      wrapGetCategoriesResponse.jsonBody,
-                                      r'''$[:].category''',
-                                      true,
-                                    ) as List)
-                                      .map<String>((s) => s.toString())
-                                      .toList()
-                                  : List.generate(
-                                      random_data.randomInteger(0, 0),
-                                      (index) => random_data.randomString(
-                                            1,
-                                            10,
-                                            true,
-                                            false,
-                                            false,
-                                          )))
-                              .toList())
-                          .toList();
+                                        r'''$[:].category''',
+                                        true,
+                                      ) as List)
+                                        .map<String>((s) => s.toString())
+                                        .toList()
+                                    : List.generate(
+                                        random_data.randomInteger(0, 0),
+                                        (index) => random_data.randomString(
+                                              1,
+                                              10,
+                                              true,
+                                              false,
+                                              false,
+                                            )))
+                                .toList())
+                            .toList();
 
-                      return Wrap(
-                        spacing: 7.0,
-                        runSpacing: 7.0,
-                        alignment: WrapAlignment.start,
-                        crossAxisAlignment: WrapCrossAlignment.center,
-                        direction: Axis.horizontal,
-                        runAlignment: WrapAlignment.center,
-                        verticalDirection: VerticalDirection.down,
-                        clipBehavior: Clip.none,
-                        children:
-                            List.generate(categories.length, (categoriesIndex) {
-                          final categoriesItem = categories[categoriesIndex];
-                          return FFButtonWidget(
-                            onPressed: (valueOrDefault<String>(
-                                      ((List<String>? categories,
-                                                  String category) {
-                                        return (categories ?? [])
-                                            .where((element) =>
-                                                element == category)
-                                            .length;
-                                      }(
-                                              GetPendingMiniOrdersCall
-                                                  .allCategories(
-                                                containerGetPendingMiniOrdersResponse
-                                                    .jsonBody,
-                                              )?.toList(),
-                                              categoriesItem))
-                                          .toString(),
-                                      '0',
-                                    ) ==
-                                    '0')
-                                ? null
-                                : () async {
-                                    context.pushNamed(
-                                      MiniOrdersPageWidget.routeName,
-                                      queryParameters: {
-                                        'category': serializeParam(
-                                          categoriesItem,
-                                          ParamType.String,
-                                        ),
-                                      }.withoutNulls,
-                                    );
-                                  },
-                            text: '${valueOrDefault<String>(
-                              ((List<String>? categories, String category) {
-                                return (categories ?? [])
-                                    .where((element) => element == category)
-                                    .length;
-                              }(
-                                      GetPendingMiniOrdersCall.allCategories(
-                                        containerGetPendingMiniOrdersResponse
-                                            .jsonBody,
-                                      )?.toList(),
-                                      categoriesItem))
-                                  .toString(),
-                              '0',
-                            )} ${categoriesItem}',
-                            options: FFButtonOptions(
-                              height: 40.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  16.0, 0.0, 16.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              color: valueOrDefault<Color>(
-                                valueOrDefault<String>(
-                                          ((List<String>? categories,
-                                                      String category) {
-                                            return (categories ?? [])
-                                                .where((element) =>
-                                                    element == category)
-                                                .length;
-                                          }(
-                                                  GetPendingMiniOrdersCall
-                                                      .allCategories(
-                                                    containerGetPendingMiniOrdersResponse
-                                                        .jsonBody,
-                                                  )?.toList(),
-                                                  categoriesItem))
-                                              .toString(),
-                                          '0',
-                                        ) ==
-                                        '0'
-                                    ? FlutterFlowTheme.of(context).alternate
-                                    : FlutterFlowTheme.of(context).accent1,
-                                FlutterFlowTheme.of(context).alternate,
-                              ),
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .displayMedium
-                                  .override(
-                                    fontFamily: 'Roboto',
-                                    letterSpacing: 0.0,
-                                  ),
-                              elevation: 0.0,
-                              borderSide: BorderSide(
+                        return Wrap(
+                          spacing: 7.0,
+                          runSpacing: 7.0,
+                          alignment: WrapAlignment.start,
+                          crossAxisAlignment: WrapCrossAlignment.center,
+                          direction: Axis.horizontal,
+                          runAlignment: WrapAlignment.center,
+                          verticalDirection: VerticalDirection.down,
+                          clipBehavior: Clip.none,
+                          children: List.generate(categories.length,
+                              (categoriesIndex) {
+                            final categoriesItem = categories[categoriesIndex];
+                            return FFButtonWidget(
+                              onPressed: (valueOrDefault<String>(
+                                        ((List<String>? categories,
+                                                    String category) {
+                                          return (categories ?? [])
+                                              .where((element) =>
+                                                  element == category)
+                                              .length;
+                                        }(
+                                                GetPendingMiniOrdersCall
+                                                    .allCategories(
+                                                  containerGetPendingMiniOrdersResponse
+                                                      .jsonBody,
+                                                )?.toList(),
+                                                categoriesItem))
+                                            .toString(),
+                                        '0',
+                                      ) ==
+                                      '0')
+                                  ? null
+                                  : () async {
+                                      context.pushNamed(
+                                        MiniOrdersPageWidget.routeName,
+                                        queryParameters: {
+                                          'category': serializeParam(
+                                            categoriesItem,
+                                            ParamType.String,
+                                          ),
+                                        }.withoutNulls,
+                                      );
+                                    },
+                              text: '${valueOrDefault<String>(
+                                ((List<String>? categories, String category) {
+                                  return (categories ?? [])
+                                      .where((element) => element == category)
+                                      .length;
+                                }(
+                                        GetPendingMiniOrdersCall.allCategories(
+                                          containerGetPendingMiniOrdersResponse
+                                              .jsonBody,
+                                        )?.toList(),
+                                        categoriesItem))
+                                    .toString(),
+                                '0',
+                              )} ${categoriesItem}',
+                              options: FFButtonOptions(
+                                height: 40.0,
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 0.0, 16.0, 0.0),
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
                                 color: valueOrDefault<Color>(
                                   valueOrDefault<String>(
                                             ((List<String>? categories,
@@ -225,27 +229,59 @@ class _Tab1WidgetState extends State<Tab1Widget> {
                                             '0',
                                           ) ==
                                           '0'
-                                      ? FlutterFlowTheme.of(context)
-                                          .secondaryText
-                                      : FlutterFlowTheme.of(context).primary,
-                                  FlutterFlowTheme.of(context).secondaryText,
+                                      ? FlutterFlowTheme.of(context).alternate
+                                      : FlutterFlowTheme.of(context).accent1,
+                                  FlutterFlowTheme.of(context).alternate,
                                 ),
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .displayMedium
+                                    .override(
+                                      fontFamily: 'Roboto',
+                                      letterSpacing: 0.0,
+                                    ),
+                                elevation: 0.0,
+                                borderSide: BorderSide(
+                                  color: valueOrDefault<Color>(
+                                    valueOrDefault<String>(
+                                              ((List<String>? categories,
+                                                          String category) {
+                                                return (categories ?? [])
+                                                    .where((element) =>
+                                                        element == category)
+                                                    .length;
+                                              }(
+                                                      GetPendingMiniOrdersCall
+                                                          .allCategories(
+                                                        containerGetPendingMiniOrdersResponse
+                                                            .jsonBody,
+                                                      )?.toList(),
+                                                      categoriesItem))
+                                                  .toString(),
+                                              '0',
+                                            ) ==
+                                            '0'
+                                        ? FlutterFlowTheme.of(context)
+                                            .secondaryText
+                                        : FlutterFlowTheme.of(context).primary,
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                  ),
+                                ),
+                                borderRadius: BorderRadius.circular(8.0),
+                                disabledTextColor:
+                                    FlutterFlowTheme.of(context).secondaryText,
                               ),
-                              borderRadius: BorderRadius.circular(8.0),
-                              disabledTextColor:
-                                  FlutterFlowTheme.of(context).secondaryText,
-                            ),
-                          );
-                        }),
-                      );
-                    },
-                  );
-                },
+                            );
+                          }),
+                        );
+                      },
+                    );
+                  },
+                ),
               ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }

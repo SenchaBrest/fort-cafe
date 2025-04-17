@@ -69,10 +69,6 @@ List<dynamic>? removeItemFromCar(
   return cart;
 }
 
-int getCurrentday() {
-  return DateTime.now().weekday;
-}
-
 double getTotaPrice(List<String> listOfItems) {
   return listOfItems.fold<double>(
     0.0,

@@ -1,5 +1,4 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/instant_timer.dart';
 import '/worker/tab1/tab1_widget.dart';
 import '/worker/tab2/tab2_widget.dart';
 import '/worker/tab3/tab3_widget.dart';
@@ -20,7 +19,6 @@ class WorkerPageModel extends FlutterFlowModel<WorkerPageWidget> {
 
   ///  State fields for stateful widgets in this page.
 
-  InstantTimer? instantTimer;
   // State field(s) for TabBar widget.
   TabController? tabBarController;
   int get tabBarCurrentIndex =>
@@ -44,7 +42,6 @@ class WorkerPageModel extends FlutterFlowModel<WorkerPageWidget> {
 
   @override
   void dispose() {
-    instantTimer?.cancel();
     tabBarController?.dispose();
     tab1Model.dispose();
     tab2Model.dispose();

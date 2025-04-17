@@ -2,13 +2,11 @@ import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_button_tabbar.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/instant_timer.dart';
 import '/worker/tab1/tab1_widget.dart';
 import '/worker/tab2/tab2_widget.dart';
 import '/worker/tab3/tab3_widget.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
 import 'worker_page_model.dart';
 export 'worker_page_model.dart';
@@ -33,17 +31,6 @@ class _WorkerPageWidgetState extends State<WorkerPageWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => WorkerPageModel());
-
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.instantTimer = InstantTimer.periodic(
-        duration: Duration(milliseconds: 1000),
-        callback: (timer) async {
-          safeSetState(() {});
-        },
-        startImmediately: true,
-      );
-    });
 
     _model.tabBarController = TabController(
       vsync: this,
@@ -77,195 +64,216 @@ class _WorkerPageWidgetState extends State<WorkerPageWidget>
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
           body: SafeArea(
             top: true,
-            child: Stack(
-              children: [
-                Column(
-                  children: [
-                    Align(
-                      alignment: Alignment(0.0, 0),
-                      child: FlutterFlowButtonTabBar(
-                        useToggleButtonStyle: true,
-                        labelStyle:
-                            FlutterFlowTheme.of(context).titleMedium.override(
-                                  fontFamily: 'Roboto',
-                                  letterSpacing: 0.0,
+            child: Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(
+                  valueOrDefault<double>(
+                    (double width) {
+                      return width > 480.0 ? (width - 480.0) / 2 : 0.0;
+                    }(MediaQuery.sizeOf(context).width),
+                    0.0,
+                  ),
+                  0.0,
+                  valueOrDefault<double>(
+                    (double width) {
+                      return width > 480.0 ? (width - 480.0) / 2 : 0.0;
+                    }(MediaQuery.sizeOf(context).width),
+                    0.0,
+                  ),
+                  0.0),
+              child: Stack(
+                children: [
+                  Column(
+                    children: [
+                      Align(
+                        alignment: Alignment(0.0, 0),
+                        child: FlutterFlowButtonTabBar(
+                          useToggleButtonStyle: true,
+                          labelStyle:
+                              FlutterFlowTheme.of(context).titleMedium.override(
+                                    fontFamily: 'Roboto',
+                                    letterSpacing: 0.0,
+                                  ),
+                          unselectedLabelStyle:
+                              FlutterFlowTheme.of(context).titleMedium.override(
+                                    fontFamily: 'Roboto',
+                                    letterSpacing: 0.0,
+                                  ),
+                          labelColor: FlutterFlowTheme.of(context).primaryText,
+                          unselectedLabelColor:
+                              FlutterFlowTheme.of(context).secondaryText,
+                          backgroundColor: FlutterFlowTheme.of(context).accent1,
+                          unselectedBackgroundColor:
+                              FlutterFlowTheme.of(context).alternate,
+                          borderColor: FlutterFlowTheme.of(context).primary,
+                          unselectedBorderColor:
+                              FlutterFlowTheme.of(context).alternate,
+                          borderWidth: 2.0,
+                          borderRadius: 8.0,
+                          elevation: 0.0,
+                          buttonMargin: EdgeInsetsDirectional.fromSTEB(
+                              8.0, 0.0, 8.0, 0.0),
+                          tabs: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.close_sharp,
                                 ),
-                        unselectedLabelStyle:
-                            FlutterFlowTheme.of(context).titleMedium.override(
-                                  fontFamily: 'Roboto',
-                                  letterSpacing: 0.0,
+                                Tab(
+                                  text: '',
                                 ),
-                        labelColor: FlutterFlowTheme.of(context).primaryText,
-                        unselectedLabelColor:
-                            FlutterFlowTheme.of(context).secondaryText,
-                        backgroundColor: FlutterFlowTheme.of(context).accent1,
-                        unselectedBackgroundColor:
-                            FlutterFlowTheme.of(context).alternate,
-                        borderColor: FlutterFlowTheme.of(context).primary,
-                        unselectedBorderColor:
-                            FlutterFlowTheme.of(context).alternate,
-                        borderWidth: 2.0,
-                        borderRadius: 8.0,
-                        elevation: 0.0,
-                        buttonMargin:
-                            EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
-                        tabs: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.close_sharp,
-                              ),
-                              Tab(
-                                text: '',
-                              ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.donut_small_rounded,
-                              ),
-                              Tab(
-                                text: '',
-                              ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.done_all,
-                              ),
-                              Tab(
-                                text: '',
-                              ),
-                            ],
-                          ),
-                        ],
-                        controller: _model.tabBarController,
-                        onTap: (i) async {
-                          [() async {}, () async {}, () async {}][i]();
-                        },
-                      ),
-                    ),
-                    Expanded(
-                      child: TabBarView(
-                        controller: _model.tabBarController,
-                        physics: const NeverScrollableScrollPhysics(),
-                        children: [
-                          KeepAliveWidgetWrapper(
-                            builder: (context) => wrapWithModel(
-                              model: _model.tab1Model,
-                              updateCallback: () => safeSetState(() {}),
-                              child: Tab1Widget(),
+                              ],
                             ),
-                          ),
-                          KeepAliveWidgetWrapper(
-                            builder: (context) => wrapWithModel(
-                              model: _model.tab2Model,
-                              updateCallback: () => safeSetState(() {}),
-                              child: Tab2Widget(),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.donut_small_rounded,
+                                ),
+                                Tab(
+                                  text: '',
+                                ),
+                              ],
                             ),
-                          ),
-                          KeepAliveWidgetWrapper(
-                            builder: (context) => wrapWithModel(
-                              model: _model.tab3Model,
-                              updateCallback: () => safeSetState(() {}),
-                              child: Tab3Widget(),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.done_all,
+                                ),
+                                Tab(
+                                  text: '',
+                                ),
+                              ],
                             ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                Align(
-                  alignment: AlignmentDirectional(-1.0, 1.0),
-                  child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(100.0, 0.0, 0.0, 100.0),
-                    child: InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () async {
-                        if (FFAppState().role == Role.admin.name) {
-                          context.pushNamed(
-                            AdminPageWidget.routeName,
-                            extra: <String, dynamic>{
-                              kTransitionInfoKey: TransitionInfo(
-                                hasTransition: true,
-                                transitionType: PageTransitionType.rightToLeft,
-                              ),
-                            },
-                          );
-                        } else {
-                          context.pushNamed(
-                            HomePageWidget.routeName,
-                            extra: <String, dynamic>{
-                              kTransitionInfoKey: TransitionInfo(
-                                hasTransition: true,
-                                transitionType: PageTransitionType.rightToLeft,
-                              ),
-                            },
-                          );
-                        }
-                      },
-                      onDoubleTap: () async {
-                        context.pushNamed(
-                          WorkerPageWidget.routeName,
-                          extra: <String, dynamic>{
-                            kTransitionInfoKey: TransitionInfo(
-                              hasTransition: true,
-                              transitionType: PageTransitionType.rightToLeft,
-                            ),
+                          ],
+                          controller: _model.tabBarController,
+                          onTap: (i) async {
+                            [() async {}, () async {}, () async {}][i]();
                           },
-                        );
-
-                        if (FFAppState().role == Role.admin.name) {
-                          context.pushNamed(
-                            HomePageWidget.routeName,
-                            extra: <String, dynamic>{
-                              kTransitionInfoKey: TransitionInfo(
-                                hasTransition: true,
-                                transitionType: PageTransitionType.rightToLeft,
-                              ),
-                            },
-                          );
-                        } else {
-                          context.pushNamed(
-                            HomePageWidget.routeName,
-                            extra: <String, dynamic>{
-                              kTransitionInfoKey: TransitionInfo(
-                                hasTransition: true,
-                                transitionType: PageTransitionType.rightToLeft,
-                              ),
-                            },
-                          );
-                        }
-                      },
-                      child: Container(
-                        width: 50.0,
-                        height: 50.0,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(25.0),
-                          border: Border.all(
-                            color: FlutterFlowTheme.of(context).primaryText,
-                          ),
                         ),
-                        child: Icon(
-                          Icons.arrow_forward,
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          size: 24.0,
+                      ),
+                      Expanded(
+                        child: TabBarView(
+                          controller: _model.tabBarController,
+                          physics: const NeverScrollableScrollPhysics(),
+                          children: [
+                            KeepAliveWidgetWrapper(
+                              builder: (context) => wrapWithModel(
+                                model: _model.tab1Model,
+                                updateCallback: () => safeSetState(() {}),
+                                child: Tab1Widget(),
+                              ),
+                            ),
+                            KeepAliveWidgetWrapper(
+                              builder: (context) => wrapWithModel(
+                                model: _model.tab2Model,
+                                updateCallback: () => safeSetState(() {}),
+                                child: Tab2Widget(),
+                              ),
+                            ),
+                            KeepAliveWidgetWrapper(
+                              builder: (context) => wrapWithModel(
+                                model: _model.tab3Model,
+                                updateCallback: () => safeSetState(() {}),
+                                child: Tab3Widget(),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  Align(
+                    alignment: AlignmentDirectional(-1.0, 1.0),
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                          100.0, 0.0, 0.0, 100.0),
+                      child: InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          if (FFAppState().role == Role.admin.name) {
+                            context.pushNamed(
+                              AdminPageWidget.routeName,
+                              extra: <String, dynamic>{
+                                kTransitionInfoKey: TransitionInfo(
+                                  hasTransition: true,
+                                  transitionType:
+                                      PageTransitionType.rightToLeft,
+                                ),
+                              },
+                            );
+                          } else {
+                            context.pushNamed(
+                              HomePageWidget.routeName,
+                              extra: <String, dynamic>{
+                                kTransitionInfoKey: TransitionInfo(
+                                  hasTransition: true,
+                                  transitionType:
+                                      PageTransitionType.rightToLeft,
+                                ),
+                              },
+                            );
+                          }
+                        },
+                        onDoubleTap: () async {
+                          context.pushNamed(
+                            WorkerPageWidget.routeName,
+                            extra: <String, dynamic>{
+                              kTransitionInfoKey: TransitionInfo(
+                                hasTransition: true,
+                                transitionType: PageTransitionType.rightToLeft,
+                              ),
+                            },
+                          );
+
+                          if (FFAppState().role == Role.admin.name) {
+                            context.pushNamed(
+                              HomePageWidget.routeName,
+                              extra: <String, dynamic>{
+                                kTransitionInfoKey: TransitionInfo(
+                                  hasTransition: true,
+                                  transitionType:
+                                      PageTransitionType.rightToLeft,
+                                ),
+                              },
+                            );
+                          } else {
+                            context.pushNamed(
+                              HomePageWidget.routeName,
+                              extra: <String, dynamic>{
+                                kTransitionInfoKey: TransitionInfo(
+                                  hasTransition: true,
+                                  transitionType:
+                                      PageTransitionType.rightToLeft,
+                                ),
+                              },
+                            );
+                          }
+                        },
+                        child: Container(
+                          width: 50.0,
+                          height: 50.0,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(25.0),
+                            border: Border.all(
+                              color: FlutterFlowTheme.of(context).primaryText,
+                            ),
+                          ),
+                          child: Icon(
+                            Icons.arrow_forward,
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            size: 24.0,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

@@ -1,9 +1,9 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/instant_timer.dart';
 import '/pages/client/item/item_widget.dart';
 import '/index.dart';
+import 'dart:async';
 import 'home_page_widget.dart' show HomePageWidget;
 import 'package:flutter/material.dart';
 
@@ -22,7 +22,8 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
 
   // Stores action output result for [Backend Call - Query Rows] action in HomePage widget.
   List<UsersRow>? role;
-  InstantTimer? instantTimer;
+  Completer<List<FlagsRow>>? requestCompleter;
+  Completer<ApiCallResponse>? apiRequestCompleter;
   // Stores action output result for [Backend Call - API] action in HomePage widget.
   ApiCallResponse? isUserAWorker;
   // Models for item dynamic component.
@@ -37,7 +38,37 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
 
   @override
   void dispose() {
-    instantTimer?.cancel();
     itemModels.dispose();
+  }
+
+  /// Additional helper methods.
+  Future waitForRequestCompleted({
+    double minWait = 0,
+    double maxWait = double.infinity,
+  }) async {
+    final stopwatch = Stopwatch()..start();
+    while (true) {
+      await Future.delayed(Duration(milliseconds: 50));
+      final timeElapsed = stopwatch.elapsedMilliseconds;
+      final requestComplete = requestCompleter?.isCompleted ?? false;
+      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
+        break;
+      }
+    }
+  }
+
+  Future waitForApiRequestCompleted({
+    double minWait = 0,
+    double maxWait = double.infinity,
+  }) async {
+    final stopwatch = Stopwatch()..start();
+    while (true) {
+      await Future.delayed(Duration(milliseconds: 50));
+      final timeElapsed = stopwatch.elapsedMilliseconds;
+      final requestComplete = apiRequestCompleter?.isCompleted ?? false;
+      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
+        break;
+      }
+    }
   }
 }

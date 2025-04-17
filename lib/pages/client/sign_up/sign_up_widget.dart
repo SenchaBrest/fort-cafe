@@ -83,7 +83,21 @@ class _SignUpWidgetState extends State<SignUpWidget> {
     context.watch<FFAppState>();
 
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+      padding: EdgeInsetsDirectional.fromSTEB(
+          valueOrDefault<double>(
+            (double width) {
+              return width > 480.0 ? (width - 480.0) / 2 : 0.0;
+            }(MediaQuery.sizeOf(context).width),
+            0.0,
+          ),
+          0.0,
+          valueOrDefault<double>(
+            (double width) {
+              return width > 480.0 ? (width - 480.0) / 2 : 0.0;
+            }(MediaQuery.sizeOf(context).width),
+            0.0,
+          ),
+          0.0),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [

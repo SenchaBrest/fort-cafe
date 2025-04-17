@@ -37,17 +37,34 @@ class _NothingWidgetState extends State<NothingWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 70.0,
-      decoration: BoxDecoration(
-        color: Colors.transparent,
-      ),
-      child: Align(
-        alignment: AlignmentDirectional(0.0, 0.0),
-        child: Icon(
-          Icons.sentiment_dissatisfied,
-          color: FlutterFlowTheme.of(context).secondaryText,
-          size: 64.0,
+    return Padding(
+      padding: EdgeInsetsDirectional.fromSTEB(
+          valueOrDefault<double>(
+            (double width) {
+              return width > 480.0 ? (width - 480.0) / 2 : 0.0;
+            }(MediaQuery.sizeOf(context).width),
+            0.0,
+          ),
+          0.0,
+          valueOrDefault<double>(
+            (double width) {
+              return width > 480.0 ? (width - 480.0) / 2 : 0.0;
+            }(MediaQuery.sizeOf(context).width),
+            0.0,
+          ),
+          0.0),
+      child: Container(
+        height: 70.0,
+        decoration: BoxDecoration(
+          color: Colors.transparent,
+        ),
+        child: Align(
+          alignment: AlignmentDirectional(0.0, 0.0),
+          child: Icon(
+            Icons.sentiment_dissatisfied,
+            color: FlutterFlowTheme.of(context).secondaryText,
+            size: 64.0,
+          ),
         ),
       ),
     );

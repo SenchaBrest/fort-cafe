@@ -47,168 +47,189 @@ class _RoleAssignmentWidgetState extends State<RoleAssignmentWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.transparent,
-      ),
-      child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              widget.userNameAndSurname!,
-              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                    fontFamily: 'Inter',
-                    letterSpacing: 0.0,
-                  ),
-            ),
-            FFButtonWidget(
-              onPressed: () async {
-                await UsersTable().update(
-                  data: {
-                    'role': 'user',
-                  },
-                  matchingRows: (rows) => rows.eqOrNull(
-                    'userId',
-                    widget.userId,
-                  ),
-                );
-                Navigator.pop(context);
-                await actions.hapticFeedbackForTelegramByType(
-                  'notification_success',
-                );
-              },
-              text: 'Обычный пользователь',
-              options: FFButtonOptions(
-                width: double.infinity,
-                height: 50.0,
-                padding: EdgeInsets.all(8.0),
-                iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                color: FlutterFlowTheme.of(context).secondary,
-                textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                      fontFamily: 'Roboto',
-                      color: FlutterFlowTheme.of(context).info,
+    return Padding(
+      padding: EdgeInsetsDirectional.fromSTEB(
+          valueOrDefault<double>(
+            (double width) {
+              return width > 480.0 ? (width - 480.0) / 2 : 0.0;
+            }(MediaQuery.sizeOf(context).width),
+            0.0,
+          ),
+          0.0,
+          valueOrDefault<double>(
+            (double width) {
+              return width > 480.0 ? (width - 480.0) / 2 : 0.0;
+            }(MediaQuery.sizeOf(context).width),
+            0.0,
+          ),
+          0.0),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.transparent,
+        ),
+        child: Padding(
+          padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                widget.userNameAndSurname!,
+                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      fontFamily: 'Inter',
                       letterSpacing: 0.0,
                     ),
-                elevation: 0.0,
-                borderSide: BorderSide(
-                  color: Colors.transparent,
-                  width: 1.0,
-                ),
-                borderRadius: BorderRadius.circular(8.0),
               ),
-            ),
-            FFButtonWidget(
-              onPressed: () async {
-                await UsersTable().update(
-                  data: {
-                    'role': 'worker',
-                  },
-                  matchingRows: (rows) => rows.eqOrNull(
-                    'userId',
-                    widget.userId,
-                  ),
-                );
-                Navigator.pop(context);
-                await actions.hapticFeedbackForTelegramByType(
-                  'notification_success',
-                );
-              },
-              text: 'Назначить работником',
-              options: FFButtonOptions(
-                width: double.infinity,
-                height: 50.0,
-                padding: EdgeInsets.all(8.0),
-                iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                color: FlutterFlowTheme.of(context).primary,
-                textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                      fontFamily: 'Roboto',
-                      color: FlutterFlowTheme.of(context).info,
-                      letterSpacing: 0.0,
+              FFButtonWidget(
+                onPressed: () async {
+                  await UsersTable().update(
+                    data: {
+                      'role': 'user',
+                    },
+                    matchingRows: (rows) => rows.eqOrNull(
+                      'userId',
+                      widget.userId,
                     ),
-                elevation: 0.0,
-                borderSide: BorderSide(
-                  color: Colors.transparent,
-                  width: 1.0,
-                ),
-                borderRadius: BorderRadius.circular(8.0),
-              ),
-            ),
-            FFButtonWidget(
-              onPressed: () async {
-                await UsersTable().update(
-                  data: {
-                    'role': 'admin',
-                  },
-                  matchingRows: (rows) => rows.eqOrNull(
-                    'userId',
-                    widget.userId,
+                  );
+                  Navigator.pop(context);
+                  await actions.hapticFeedbackForTelegramByType(
+                    'notification_success',
+                  );
+                },
+                text: 'Обычный пользователь',
+                options: FFButtonOptions(
+                  width: double.infinity,
+                  height: 50.0,
+                  padding: EdgeInsets.all(8.0),
+                  iconPadding:
+                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                  color: FlutterFlowTheme.of(context).secondary,
+                  textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                        fontFamily: 'Roboto',
+                        color: FlutterFlowTheme.of(context).info,
+                        letterSpacing: 0.0,
+                      ),
+                  elevation: 0.0,
+                  borderSide: BorderSide(
+                    color: Colors.transparent,
+                    width: 1.0,
                   ),
-                );
-                Navigator.pop(context);
-                await actions.hapticFeedbackForTelegramByType(
-                  'notification_success',
-                );
-              },
-              text: 'Назначить администратором',
-              options: FFButtonOptions(
-                width: double.infinity,
-                height: 50.0,
-                padding: EdgeInsets.all(8.0),
-                iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                color: Color(0xFF102C54),
-                textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                      fontFamily: 'Roboto',
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      letterSpacing: 0.0,
-                    ),
-                elevation: 0.0,
-                borderSide: BorderSide(
-                  color: Colors.transparent,
-                  width: 1.0,
+                  borderRadius: BorderRadius.circular(8.0),
                 ),
-                borderRadius: BorderRadius.circular(8.0),
               ),
-            ),
-            Spacer(),
-            FFButtonWidget(
-              onPressed: () async {
-                await UsersTable().update(
-                  data: {
-                    'role': 'ban_user',
-                  },
-                  matchingRows: (rows) => rows.eqOrNull(
-                    'userId',
-                    widget.userId,
+              FFButtonWidget(
+                onPressed: () async {
+                  await UsersTable().update(
+                    data: {
+                      'role': 'worker',
+                    },
+                    matchingRows: (rows) => rows.eqOrNull(
+                      'userId',
+                      widget.userId,
+                    ),
+                  );
+                  Navigator.pop(context);
+                  await actions.hapticFeedbackForTelegramByType(
+                    'notification_success',
+                  );
+                },
+                text: 'Назначить работником',
+                options: FFButtonOptions(
+                  width: double.infinity,
+                  height: 50.0,
+                  padding: EdgeInsets.all(8.0),
+                  iconPadding:
+                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                  color: FlutterFlowTheme.of(context).primary,
+                  textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                        fontFamily: 'Roboto',
+                        color: FlutterFlowTheme.of(context).info,
+                        letterSpacing: 0.0,
+                      ),
+                  elevation: 0.0,
+                  borderSide: BorderSide(
+                    color: Colors.transparent,
+                    width: 1.0,
                   ),
-                );
-                Navigator.pop(context);
-                await actions.hapticFeedbackForTelegramByType(
-                  'notification_success',
-                );
-              },
-              text: 'Забанить пользователя',
-              options: FFButtonOptions(
-                width: double.infinity,
-                height: 50.0,
-                padding: EdgeInsets.all(8.0),
-                iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                color: FlutterFlowTheme.of(context).tertiary,
-                textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                      fontFamily: 'Roboto',
-                      color: FlutterFlowTheme.of(context).info,
-                      letterSpacing: 0.0,
-                    ),
-                elevation: 0.0,
-                borderSide: BorderSide(
-                  color: Colors.transparent,
-                  width: 1.0,
+                  borderRadius: BorderRadius.circular(8.0),
                 ),
-                borderRadius: BorderRadius.circular(8.0),
               ),
-            ),
-          ].divide(SizedBox(height: 12.0)),
+              FFButtonWidget(
+                onPressed: () async {
+                  await UsersTable().update(
+                    data: {
+                      'role': 'admin',
+                    },
+                    matchingRows: (rows) => rows.eqOrNull(
+                      'userId',
+                      widget.userId,
+                    ),
+                  );
+                  Navigator.pop(context);
+                  await actions.hapticFeedbackForTelegramByType(
+                    'notification_success',
+                  );
+                },
+                text: 'Назначить администратором',
+                options: FFButtonOptions(
+                  width: double.infinity,
+                  height: 50.0,
+                  padding: EdgeInsets.all(8.0),
+                  iconPadding:
+                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                  color: Color(0xFF102C54),
+                  textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                        fontFamily: 'Roboto',
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        letterSpacing: 0.0,
+                      ),
+                  elevation: 0.0,
+                  borderSide: BorderSide(
+                    color: Colors.transparent,
+                    width: 1.0,
+                  ),
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+              ),
+              Spacer(),
+              FFButtonWidget(
+                onPressed: () async {
+                  await UsersTable().update(
+                    data: {
+                      'role': 'ban_user',
+                    },
+                    matchingRows: (rows) => rows.eqOrNull(
+                      'userId',
+                      widget.userId,
+                    ),
+                  );
+                  Navigator.pop(context);
+                  await actions.hapticFeedbackForTelegramByType(
+                    'notification_success',
+                  );
+                },
+                text: 'Забанить пользователя',
+                options: FFButtonOptions(
+                  width: double.infinity,
+                  height: 50.0,
+                  padding: EdgeInsets.all(8.0),
+                  iconPadding:
+                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                  color: FlutterFlowTheme.of(context).tertiary,
+                  textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                        fontFamily: 'Roboto',
+                        color: FlutterFlowTheme.of(context).info,
+                        letterSpacing: 0.0,
+                      ),
+                  elevation: 0.0,
+                  borderSide: BorderSide(
+                    color: Colors.transparent,
+                    width: 1.0,
+                  ),
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+              ),
+            ].divide(SizedBox(height: 12.0)),
+          ),
         ),
       ),
     );
