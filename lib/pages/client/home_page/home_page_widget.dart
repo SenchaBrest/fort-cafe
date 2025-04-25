@@ -11,6 +11,7 @@ import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'home_page_model.dart';
 export 'home_page_model.dart';
@@ -187,16 +188,31 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(
-                                                          0.0, 0.0, 0.0, 5.0),
+                                                          0.0, 15.0, 0.0, 15.0),
                                                   child: Text(
                                                     categoriesItem,
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyMedium
+                                                        .headlineMedium
                                                         .override(
-                                                          fontFamily: 'amoret',
-                                                          fontSize: 18.0,
+                                                          font:
+                                                              GoogleFonts.forum(
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .headlineMedium
+                                                                    .fontStyle,
+                                                          ),
                                                           letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .headlineMedium
+                                                                  .fontStyle,
                                                         ),
                                                   ),
                                                 ),
@@ -311,7 +327,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                             items[itemsIndex];
                                                         return Container(
                                                           width: 120.0,
-                                                          height: 175.0,
+                                                          height: 179.0,
                                                           decoration:
                                                               BoxDecoration(),
                                                           child: wrapWithModel(
@@ -404,7 +420,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 thickness: 2.0,
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .alternate,
+                                                        .secondary,
                                               ),
                                             ],
                                           );
@@ -466,12 +482,23 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       color: FlutterFlowTheme.of(context)
                                           .secondary,
                                       textStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
+                                          .titleLarge
                                           .override(
-                                            fontFamily: 'amoret',
-                                            color: Colors.white,
-                                            fontSize: 16.0,
+                                            font: GoogleFonts.forum(
+                                              fontWeight: FontWeight.w500,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleLarge
+                                                      .fontStyle,
+                                            ),
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
                                             letterSpacing: 0.0,
+                                            fontWeight: FontWeight.w500,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleLarge
+                                                    .fontStyle,
                                           ),
                                       elevation: 0.0,
                                       borderRadius: BorderRadius.circular(7.0),
@@ -499,12 +526,22 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'amoret',
+                                          font: GoogleFonts.forum(
+                                            fontWeight: FontWeight.w900,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
                                           fontSize: 24.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w900,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
                                         ),
                                   ),
                                 ),
@@ -528,12 +565,22 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'amoret',
+                                          font: GoogleFonts.forum(
+                                            fontWeight: FontWeight.w900,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
                                           color: FlutterFlowTheme.of(context)
                                               .tertiary,
                                           fontSize: 24.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w900,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
                                         ),
                                   ),
                                 ),

@@ -7,6 +7,7 @@ import '/worker/tab2/tab2_widget.dart';
 import '/worker/tab3/tab3_widget.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'worker_page_model.dart';
 export 'worker_page_model.dart';
@@ -90,13 +91,39 @@ class _WorkerPageWidgetState extends State<WorkerPageWidget>
                           useToggleButtonStyle: true,
                           labelStyle:
                               FlutterFlowTheme.of(context).titleMedium.override(
-                                    fontFamily: 'amoret',
+                                    font: GoogleFonts.forum(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .fontStyle,
+                                    ),
                                     letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .titleMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleMedium
+                                        .fontStyle,
                                   ),
                           unselectedLabelStyle:
                               FlutterFlowTheme.of(context).titleMedium.override(
-                                    fontFamily: 'amoret',
+                                    font: GoogleFonts.forum(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .fontStyle,
+                                    ),
                                     letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .titleMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleMedium
+                                        .fontStyle,
                                   ),
                           labelColor:
                               FlutterFlowTheme.of(context).secondaryText,

@@ -188,6 +188,34 @@ flutter:
     - family: 'amoret'
       fonts:
         - asset: assets/fonts/AmoretSans.ttf
+    - family: 'source sans pro'
+      fonts:
+        - asset: assets/fonts/SourceSansPro-ExtraLight.otf
+          weight: 200
+        - asset: assets/fonts/SourceSansPro-ExtraLightIt.otf
+          weight: 200
+          style: italic
+        - asset: assets/fonts/SourceSansPro-Light.otf
+          weight: 300
+        - asset: assets/fonts/SourceSansPro-LightIt.otf
+          weight: 300
+          style: italic
+        - asset: assets/fonts/SourceSansPro-Regular.otf
+        - asset: assets/fonts/SourceSansPro-Semibold.otf
+          weight: 600
+        - asset: assets/fonts/SourceSansPro-SemiboldIt.otf
+          weight: 600
+          style: italic
+        - asset: assets/fonts/SourceSansPro-Bold.otf
+          weight: 700
+        - asset: assets/fonts/SourceSansPro-BoldIt.otf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/SourceSansPro-Black.otf
+          weight: 900
+        - asset: assets/fonts/SourceSansPro-BlackIt.otf
+          weight: 900
+          style: italic
 
     - family: Load
       fonts:

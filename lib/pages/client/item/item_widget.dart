@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'item_model.dart';
 export 'item_model.dart';
 
@@ -164,11 +165,19 @@ class _ItemWidgetState extends State<ItemWidget> with TickerProviderStateMixin {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'amoret',
+                                    font: GoogleFonts.forum(
+                                      fontWeight: FontWeight.w600,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
                                     color: FlutterFlowTheme.of(context).info,
                                     fontSize: 14.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
                                   ),
                             ),
                           ),
@@ -185,30 +194,57 @@ class _ItemWidgetState extends State<ItemWidget> with TickerProviderStateMixin {
               ),
               Container(
                 width: 110.0,
-                height: 32.0,
+                height: 37.0,
                 decoration: BoxDecoration(),
                 child: Align(
                   alignment: AlignmentDirectional(0.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      AutoSizeText(
+                      Text(
                         valueOrDefault<String>(
                           widget.name,
                           'name',
                         ),
                         maxLines: 1,
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'amoret',
-                              fontSize: 8.0,
+                        style: FlutterFlowTheme.of(context).bodyLarge.override(
+                              font: GoogleFonts.forum(
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .bodyLarge
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .bodyLarge
+                                    .fontStyle,
+                              ),
                               letterSpacing: 0.0,
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .bodyLarge
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyLarge
+                                  .fontStyle,
                             ),
                       ),
                       AutoSizeText(
                         '${widget.price?.toString()} р.',
-                        style: FlutterFlowTheme.of(context).bodySmall.override(
-                              fontFamily: 'amoret',
+                        style: FlutterFlowTheme.of(context).bodyLarge.override(
+                              font: GoogleFonts.forum(
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .bodyLarge
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .bodyLarge
+                                    .fontStyle,
+                              ),
+                              color: FlutterFlowTheme.of(context).secondary,
+                              fontSize: 18.0,
                               letterSpacing: 0.0,
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .bodyLarge
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyLarge
+                                  .fontStyle,
                             ),
                       ),
                     ],
@@ -216,7 +252,7 @@ class _ItemWidgetState extends State<ItemWidget> with TickerProviderStateMixin {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 20.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 9.0, 0.0, 20.0),
                 child: Container(
                   width: 80.0,
                   height: 30.0,

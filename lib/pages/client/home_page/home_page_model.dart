@@ -1,4 +1,3 @@
-import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/pages/client/item/item_widget.dart';
@@ -22,8 +21,6 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   Stream<List<ItemsRow>>? homePageSupabaseStream;
   // Stores action output result for [Backend Call - Query Rows] action in HomePage widget.
   List<UsersRow>? role;
-  // Stores action output result for [Backend Call - API] action in HomePage widget.
-  ApiCallResponse? isUserAWorker;
   Stream<List<FlagsRow>>? stackSupabaseStream;
   // Models for item dynamic component.
   late FlutterFlowDynamicModels<ItemModel> itemModels;

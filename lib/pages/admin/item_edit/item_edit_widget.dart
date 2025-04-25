@@ -5,6 +5,7 @@ import '/custom_code/actions/index.dart' as actions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'item_edit_model.dart';
 export 'item_edit_model.dart';
 
@@ -141,7 +142,7 @@ class _ItemEditWidgetState extends State<ItemEditWidget> {
                         }
                       },
                       activeColor: FlutterFlowTheme.of(context).secondaryText,
-                      activeTrackColor: FlutterFlowTheme.of(context).primary,
+                      activeTrackColor: FlutterFlowTheme.of(context).secondary,
                       inactiveTrackColor: FlutterFlowTheme.of(context).tertiary,
                       inactiveThumbColor:
                           FlutterFlowTheme.of(context).secondaryText,
@@ -159,15 +160,28 @@ class _ItemEditWidgetState extends State<ItemEditWidget> {
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    AutoSizeText(
+                    Text(
                       valueOrDefault<String>(
                         widget.name,
                         'name',
                       ),
                       maxLines: 1,
-                      style: FlutterFlowTheme.of(context).bodySmall.override(
-                            fontFamily: 'amoret',
+                      style: FlutterFlowTheme.of(context).bodyLarge.override(
+                            font: GoogleFonts.forum(
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .bodyLarge
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyLarge
+                                  .fontStyle,
+                            ),
                             letterSpacing: 0.0,
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .bodyLarge
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .bodyLarge
+                                .fontStyle,
                           ),
                     ),
                     Row(
@@ -177,9 +191,22 @@ class _ItemEditWidgetState extends State<ItemEditWidget> {
                         AutoSizeText(
                           '${widget.price?.toString()} р.',
                           style:
-                              FlutterFlowTheme.of(context).bodySmall.override(
-                                    fontFamily: 'amoret',
+                              FlutterFlowTheme.of(context).bodyLarge.override(
+                                    font: GoogleFonts.forum(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyLarge
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyLarge
+                                          .fontStyle,
+                                    ),
                                     letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodyLarge
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyLarge
+                                        .fontStyle,
                                   ),
                         ),
                         Text(
@@ -187,12 +214,26 @@ class _ItemEditWidgetState extends State<ItemEditWidget> {
                             'x${widget.count?.toString()}',
                             'x0',
                           ),
-                          style:
-                              FlutterFlowTheme.of(context).bodySmall.override(
-                                    fontFamily: 'amoret',
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    letterSpacing: 0.0,
-                                  ),
+                          style: FlutterFlowTheme.of(context)
+                              .bodyLarge
+                              .override(
+                                font: GoogleFonts.forum(
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .bodyLarge
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .bodyLarge
+                                      .fontStyle,
+                                ),
+                                color: FlutterFlowTheme.of(context).secondary,
+                                letterSpacing: 0.0,
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .bodyLarge
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .bodyLarge
+                                    .fontStyle,
+                              ),
                         ),
                       ],
                     ),

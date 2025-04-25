@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'role_assignment_model.dart';
 export 'role_assignment_model.dart';
 
@@ -74,9 +75,21 @@ class _RoleAssignmentWidgetState extends State<RoleAssignmentWidget> {
             children: [
               Text(
                 widget.userNameAndSurname!,
-                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'amoret',
+                textAlign: TextAlign.center,
+                style: FlutterFlowTheme.of(context).headlineLarge.override(
+                      font: GoogleFonts.forum(
+                        fontWeight: FlutterFlowTheme.of(context)
+                            .headlineLarge
+                            .fontWeight,
+                        fontStyle: FlutterFlowTheme.of(context)
+                            .headlineLarge
+                            .fontStyle,
+                      ),
                       letterSpacing: 0.0,
+                      fontWeight:
+                          FlutterFlowTheme.of(context).headlineLarge.fontWeight,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).headlineLarge.fontStyle,
                     ),
               ),
               FFButtonWidget(
@@ -103,10 +116,20 @@ class _RoleAssignmentWidgetState extends State<RoleAssignmentWidget> {
                   iconPadding:
                       EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: FlutterFlowTheme.of(context).secondary,
-                  textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                        fontFamily: 'amoret',
-                        color: FlutterFlowTheme.of(context).info,
+                  textStyle: FlutterFlowTheme.of(context).titleLarge.override(
+                        font: GoogleFonts.forum(
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .titleLarge
+                              .fontWeight,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                        ),
+                        color: FlutterFlowTheme.of(context).secondaryText,
                         letterSpacing: 0.0,
+                        fontWeight:
+                            FlutterFlowTheme.of(context).titleLarge.fontWeight,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).titleLarge.fontStyle,
                       ),
                   elevation: 0.0,
                   borderSide: BorderSide(
@@ -140,10 +163,20 @@ class _RoleAssignmentWidgetState extends State<RoleAssignmentWidget> {
                   iconPadding:
                       EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: FlutterFlowTheme.of(context).primary,
-                  textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                        fontFamily: 'amoret',
-                        color: FlutterFlowTheme.of(context).info,
+                  textStyle: FlutterFlowTheme.of(context).titleLarge.override(
+                        font: GoogleFonts.forum(
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .titleLarge
+                              .fontWeight,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                        ),
+                        color: FlutterFlowTheme.of(context).secondaryText,
                         letterSpacing: 0.0,
+                        fontWeight:
+                            FlutterFlowTheme.of(context).titleLarge.fontWeight,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).titleLarge.fontStyle,
                       ),
                   elevation: 0.0,
                   borderSide: BorderSide(
@@ -177,10 +210,20 @@ class _RoleAssignmentWidgetState extends State<RoleAssignmentWidget> {
                   iconPadding:
                       EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: FlutterFlowTheme.of(context).spaceCadet,
-                  textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                        fontFamily: 'amoret',
+                  textStyle: FlutterFlowTheme.of(context).titleLarge.override(
+                        font: GoogleFonts.forum(
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .titleLarge
+                              .fontWeight,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                        ),
                         color: FlutterFlowTheme.of(context).secondaryText,
                         letterSpacing: 0.0,
+                        fontWeight:
+                            FlutterFlowTheme.of(context).titleLarge.fontWeight,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).titleLarge.fontStyle,
                       ),
                   elevation: 0.0,
                   borderSide: BorderSide(
@@ -215,10 +258,20 @@ class _RoleAssignmentWidgetState extends State<RoleAssignmentWidget> {
                   iconPadding:
                       EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: FlutterFlowTheme.of(context).tertiary,
-                  textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                        fontFamily: 'amoret',
-                        color: FlutterFlowTheme.of(context).info,
+                  textStyle: FlutterFlowTheme.of(context).titleLarge.override(
+                        font: GoogleFonts.forum(
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .titleLarge
+                              .fontWeight,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                        ),
+                        color: FlutterFlowTheme.of(context).secondaryText,
                         letterSpacing: 0.0,
+                        fontWeight:
+                            FlutterFlowTheme.of(context).titleLarge.fontWeight,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).titleLarge.fontStyle,
                       ),
                   elevation: 0.0,
                   borderSide: BorderSide(

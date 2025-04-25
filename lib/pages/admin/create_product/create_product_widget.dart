@@ -13,6 +13,7 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'create_product_model.dart';
 export 'create_product_model.dart';
@@ -238,7 +239,7 @@ class _CreateProductWidgetState extends State<CreateProductWidget> {
                           incrementIconBuilder: (enabled) => Icon(
                             Icons.add_rounded,
                             color: enabled
-                                ? FlutterFlowTheme.of(context).primary
+                                ? FlutterFlowTheme.of(context).secondary
                                 : FlutterFlowTheme.of(context).alternate,
                             size: 24.0,
                           ),
@@ -247,8 +248,17 @@ class _CreateProductWidgetState extends State<CreateProductWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .titleLarge
                                 .override(
-                                  fontFamily: 'amoret',
+                                  font: GoogleFonts.forum(
+                                    fontWeight: FontWeight.w600,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleLarge
+                                        .fontStyle,
+                                  ),
                                   letterSpacing: 0.0,
+                                  fontWeight: FontWeight.w600,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleLarge
+                                      .fontStyle,
                                 ),
                           ),
                           count: _model.countControllerValue1 ??=
@@ -271,9 +281,17 @@ class _CreateProductWidgetState extends State<CreateProductWidget> {
             ),
             Text(
               'Категория:',
-              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                    fontFamily: 'amoret',
+              style: FlutterFlowTheme.of(context).bodyLarge.override(
+                    font: GoogleFonts.forum(
+                      fontWeight:
+                          FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                    ),
                     letterSpacing: 0.0,
+                    fontWeight:
+                        FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                    fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
                   ),
             ),
             Container(
@@ -294,18 +312,37 @@ class _CreateProductWidgetState extends State<CreateProductWidget> {
                 )),
                 optionHeight: 32.0,
                 textStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                      fontFamily: 'amoret',
+                      font: GoogleFonts.forum(
+                        fontWeight:
+                            FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                      ),
                       letterSpacing: 0.0,
+                      fontWeight:
+                          FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).labelMedium.fontStyle,
                     ),
-                selectedTextStyle:
-                    FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'amoret',
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          letterSpacing: 0.0,
-                        ),
+                selectedTextStyle: FlutterFlowTheme.of(context)
+                    .bodyLarge
+                    .override(
+                      font: GoogleFonts.forum(
+                        fontWeight:
+                            FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                      ),
+                      color: FlutterFlowTheme.of(context).primaryText,
+                      letterSpacing: 0.0,
+                      fontWeight:
+                          FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                    ),
                 buttonPosition: RadioButtonPosition.left,
                 direction: Axis.vertical,
-                radioButtonColor: FlutterFlowTheme.of(context).primary,
+                radioButtonColor: FlutterFlowTheme.of(context).primaryText,
                 inactiveRadioButtonColor:
                     FlutterFlowTheme.of(context).primaryText,
                 toggleable: false,
@@ -336,8 +373,20 @@ class _CreateProductWidgetState extends State<CreateProductWidget> {
                     width: double.infinity,
                     height: 49.0,
                     textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'amoret',
+                          font: GoogleFonts.forum(
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontStyle,
+                          ),
                           letterSpacing: 0.0,
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .bodyMedium
+                              .fontWeight,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                         ),
                     hintText: 'Выбрать категорию...',
                     icon: Icon(
@@ -383,9 +432,22 @@ class _CreateProductWidgetState extends State<CreateProductWidget> {
                       decoration: InputDecoration(
                         labelText: 'Категория',
                         labelStyle:
-                            FlutterFlowTheme.of(context).bodyMedium.override(
-                                  fontFamily: 'amoret',
+                            FlutterFlowTheme.of(context).bodyLarge.override(
+                                  font: GoogleFonts.forum(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodyLarge
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyLarge
+                                        .fontStyle,
+                                  ),
                                   letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .bodyLarge
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .bodyLarge
+                                      .fontStyle,
                                 ),
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
@@ -419,9 +481,22 @@ class _CreateProductWidgetState extends State<CreateProductWidget> {
                         fillColor:
                             FlutterFlowTheme.of(context).secondaryBackground,
                       ),
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'amoret',
+                      style: FlutterFlowTheme.of(context).bodyLarge.override(
+                            font: GoogleFonts.forum(
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .bodyLarge
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyLarge
+                                  .fontStyle,
+                            ),
                             letterSpacing: 0.0,
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .bodyLarge
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .bodyLarge
+                                .fontStyle,
                           ),
                       minLines: 1,
                       cursorColor: FlutterFlowTheme.of(context).primaryText,
@@ -464,14 +539,33 @@ class _CreateProductWidgetState extends State<CreateProductWidget> {
                 obscureText: false,
                 decoration: InputDecoration(
                   labelText: 'Название',
-                  labelStyle: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'amoret',
+                  labelStyle: FlutterFlowTheme.of(context).bodyLarge.override(
+                        font: GoogleFonts.forum(
+                          fontWeight:
+                              FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                        ),
                         letterSpacing: 0.0,
+                        fontWeight:
+                            FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).bodyLarge.fontStyle,
                       ),
                   errorStyle: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'amoret',
+                        font: GoogleFonts.forum(
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .bodyMedium
+                              .fontWeight,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                        ),
                         color: FlutterFlowTheme.of(context).error,
                         letterSpacing: 0.0,
+                        fontWeight:
+                            FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                       ),
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(
@@ -504,9 +598,18 @@ class _CreateProductWidgetState extends State<CreateProductWidget> {
                   filled: true,
                   fillColor: FlutterFlowTheme.of(context).secondaryBackground,
                 ),
-                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'amoret',
+                style: FlutterFlowTheme.of(context).bodyLarge.override(
+                      font: GoogleFonts.forum(
+                        fontWeight:
+                            FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                      ),
                       letterSpacing: 0.0,
+                      fontWeight:
+                          FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).bodyLarge.fontStyle,
                     ),
                 minLines: 1,
                 cursorColor: FlutterFlowTheme.of(context).primaryText,
@@ -531,9 +634,20 @@ class _CreateProductWidgetState extends State<CreateProductWidget> {
                 Expanded(
                   child: Text(
                     'Цена: ${_model.countControllerValue2?.toString()}.${_model.countControllerValue3?.toString()} р.',
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'amoret',
+                    style: FlutterFlowTheme.of(context).bodyLarge.override(
+                          font: GoogleFonts.forum(
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .bodyLarge
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .bodyLarge
+                                .fontStyle,
+                          ),
                           letterSpacing: 0.0,
+                          fontWeight:
+                              FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).bodyLarge.fontStyle,
                         ),
                   ),
                 ),
@@ -557,15 +671,24 @@ class _CreateProductWidgetState extends State<CreateProductWidget> {
                       incrementIconBuilder: (enabled) => Icon(
                         Icons.add_rounded,
                         color: enabled
-                            ? FlutterFlowTheme.of(context).primary
+                            ? FlutterFlowTheme.of(context).secondary
                             : FlutterFlowTheme.of(context).alternate,
                         size: 24.0,
                       ),
                       countBuilder: (count) => Text(
                         count.toString(),
                         style: FlutterFlowTheme.of(context).titleLarge.override(
-                              fontFamily: 'amoret',
+                              font: GoogleFonts.forum(
+                                fontWeight: FontWeight.w600,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .titleLarge
+                                    .fontStyle,
+                              ),
                               letterSpacing: 0.0,
+                              fontWeight: FontWeight.w600,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .titleLarge
+                                  .fontStyle,
                             ),
                       ),
                       count: _model.countControllerValue2 ??=
@@ -602,15 +725,24 @@ class _CreateProductWidgetState extends State<CreateProductWidget> {
                       incrementIconBuilder: (enabled) => Icon(
                         Icons.add_rounded,
                         color: enabled
-                            ? FlutterFlowTheme.of(context).primary
+                            ? FlutterFlowTheme.of(context).secondary
                             : FlutterFlowTheme.of(context).alternate,
                         size: 24.0,
                       ),
                       countBuilder: (count) => Text(
                         count.toString(),
                         style: FlutterFlowTheme.of(context).titleLarge.override(
-                              fontFamily: 'amoret',
+                              font: GoogleFonts.forum(
+                                fontWeight: FontWeight.w600,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .titleLarge
+                                    .fontStyle,
+                              ),
                               letterSpacing: 0.0,
+                              fontWeight: FontWeight.w600,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .titleLarge
+                                  .fontStyle,
                             ),
                       ),
                       count: _model.countControllerValue3 ??=
@@ -652,12 +784,26 @@ class _CreateProductWidgetState extends State<CreateProductWidget> {
                       iconPadding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).primary,
-                      textStyle:
-                          FlutterFlowTheme.of(context).titleSmall.override(
-                                fontFamily: 'amoret',
-                                color: Colors.white,
-                                letterSpacing: 0.0,
-                              ),
+                      textStyle: FlutterFlowTheme.of(context)
+                          .titleLarge
+                          .override(
+                            font: GoogleFonts.forum(
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .titleLarge
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .titleLarge
+                                  .fontStyle,
+                            ),
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            letterSpacing: 0.0,
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .titleLarge
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .titleLarge
+                                .fontStyle,
+                          ),
                       elevation: 0.0,
                       borderRadius: BorderRadius.circular(8.0),
                     ),
@@ -806,12 +952,26 @@ class _CreateProductWidgetState extends State<CreateProductWidget> {
                       iconPadding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).secondary,
-                      textStyle:
-                          FlutterFlowTheme.of(context).titleSmall.override(
-                                fontFamily: 'amoret',
-                                color: FlutterFlowTheme.of(context).info,
-                                letterSpacing: 0.0,
-                              ),
+                      textStyle: FlutterFlowTheme.of(context)
+                          .titleLarge
+                          .override(
+                            font: GoogleFonts.forum(
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .titleLarge
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .titleLarge
+                                  .fontStyle,
+                            ),
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            letterSpacing: 0.0,
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .titleLarge
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .titleLarge
+                                .fontStyle,
+                          ),
                       elevation: 0.0,
                       borderSide: BorderSide(
                         color: Colors.transparent,

@@ -138,22 +138,22 @@ class LightModeTheme extends FlutterFlowTheme {
   @Deprecated('Use tertiary instead')
   Color get tertiaryColor => tertiary;
 
-  late Color primary = const Color(0xFF826040);
-  late Color secondary = const Color(0xFF877E5D);
-  late Color tertiary = const Color(0xFF230A06);
-  late Color alternate = const Color(0xFF65635B);
-  late Color primaryText = const Color(0xB2262D34);
-  late Color secondaryText = const Color(0xFFE4E0D4);
-  late Color primaryBackground = const Color(0xFFE3DFD3);
-  late Color secondaryBackground = const Color(0xFFC9BCA9);
-  late Color accent1 = const Color(0x4CCD7800);
-  late Color accent2 = const Color(0x4D08A723);
-  late Color accent3 = const Color(0xFFE16651);
-  late Color accent4 = const Color(0xCCFFFFFF);
-  late Color success = const Color(0xFF249689);
-  late Color warning = const Color(0xFFF9CF58);
-  late Color error = const Color(0xFFFF5963);
-  late Color info = const Color(0xFFFFFFFF);
+  late Color primary = const Color(0xFFE3D4C2);
+  late Color secondary = const Color(0xFFA8C8A0);
+  late Color tertiary = const Color(0xFFC4B6A6);
+  late Color alternate = const Color(0xFFD9C6B2);
+  late Color primaryText = const Color(0xFF5B4B40);
+  late Color secondaryText = const Color(0xFF7A6B5A);
+  late Color primaryBackground = const Color(0xFFF9F7F4);
+  late Color secondaryBackground = const Color(0xFFF3EDE8);
+  late Color accent1 = const Color(0xFFB3A99D);
+  late Color accent2 = const Color(0xFFD6C4B0);
+  late Color accent3 = const Color(0xFFBFAF8B);
+  late Color accent4 = const Color(0xFFA76D5D);
+  late Color success = const Color(0xFFA4C8A0);
+  late Color warning = const Color(0xFFE4C65A);
+  late Color error = const Color(0xFFD76D6D);
+  late Color info = const Color(0xFFA2C8DB);
 
   late Color mossGreen = Color(0xFF9F9056);
   late Color dun = Color(0xFFCABDAA);
@@ -205,109 +205,94 @@ class ThemeTypography extends Typography {
 
   final FlutterFlowTheme theme;
 
-  String get displayLargeFamily => 'amoret';
-  TextStyle get displayLarge => TextStyle(
-        fontFamily: 'amoret',
+  String get displayLargeFamily => 'Forum';
+  TextStyle get displayLarge => GoogleFonts.forum(
         color: theme.primaryText,
-        fontWeight: FontWeight.normal,
+        fontWeight: FontWeight.w600,
         fontSize: 64.0,
       );
-  String get displayMediumFamily => 'amoret';
-  TextStyle get displayMedium => TextStyle(
-        fontFamily: 'amoret',
+  String get displayMediumFamily => 'Forum';
+  TextStyle get displayMedium => GoogleFonts.forum(
         color: theme.primaryText,
-        fontWeight: FontWeight.normal,
+        fontWeight: FontWeight.w600,
         fontSize: 44.0,
       );
-  String get displaySmallFamily => 'amoret';
-  TextStyle get displaySmall => TextStyle(
-        fontFamily: 'amoret',
+  String get displaySmallFamily => 'Forum';
+  TextStyle get displaySmall => GoogleFonts.forum(
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 36.0,
       );
-  String get headlineLargeFamily => 'amoret';
-  TextStyle get headlineLarge => TextStyle(
-        fontFamily: 'amoret',
+  String get headlineLargeFamily => 'Forum';
+  TextStyle get headlineLarge => GoogleFonts.forum(
         color: theme.primaryText,
-        fontWeight: FontWeight.normal,
+        fontWeight: FontWeight.w600,
         fontSize: 32.0,
       );
-  String get headlineMediumFamily => 'amoret';
-  TextStyle get headlineMedium => TextStyle(
-        fontFamily: 'amoret',
+  String get headlineMediumFamily => 'Forum';
+  TextStyle get headlineMedium => GoogleFonts.forum(
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 28.0,
       );
-  String get headlineSmallFamily => 'amoret';
-  TextStyle get headlineSmall => TextStyle(
-        fontFamily: 'amoret',
+  String get headlineSmallFamily => 'Forum';
+  TextStyle get headlineSmall => GoogleFonts.forum(
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 24.0,
       );
-  String get titleLargeFamily => 'amoret';
-  TextStyle get titleLarge => TextStyle(
-        fontFamily: 'amoret',
+  String get titleLargeFamily => 'Forum';
+  TextStyle get titleLarge => GoogleFonts.forum(
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 20.0,
       );
-  String get titleMediumFamily => 'amoret';
-  TextStyle get titleMedium => TextStyle(
-        fontFamily: 'amoret',
+  String get titleMediumFamily => 'Forum';
+  TextStyle get titleMedium => GoogleFonts.forum(
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 18.0,
       );
-  String get titleSmallFamily => 'amoret';
-  TextStyle get titleSmall => TextStyle(
-        fontFamily: 'amoret',
+  String get titleSmallFamily => 'Forum';
+  TextStyle get titleSmall => GoogleFonts.forum(
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 16.0,
       );
-  String get labelLargeFamily => 'amoret';
-  TextStyle get labelLarge => TextStyle(
-        fontFamily: 'amoret',
-        color: theme.secondaryText,
+  String get labelLargeFamily => 'Forum';
+  TextStyle get labelLarge => GoogleFonts.forum(
+        color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 16.0,
       );
-  String get labelMediumFamily => 'amoret';
-  TextStyle get labelMedium => TextStyle(
-        fontFamily: 'amoret',
-        color: theme.secondaryText,
+  String get labelMediumFamily => 'Forum';
+  TextStyle get labelMedium => GoogleFonts.forum(
+        color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 14.0,
       );
-  String get labelSmallFamily => 'amoret';
-  TextStyle get labelSmall => TextStyle(
-        fontFamily: 'amoret',
-        color: theme.secondaryText,
+  String get labelSmallFamily => 'Forum';
+  TextStyle get labelSmall => GoogleFonts.forum(
+        color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 12.0,
       );
-  String get bodyLargeFamily => 'amoret';
-  TextStyle get bodyLarge => TextStyle(
-        fontFamily: 'amoret',
+  String get bodyLargeFamily => 'Forum';
+  TextStyle get bodyLarge => GoogleFonts.forum(
         color: theme.primaryText,
-        fontWeight: FontWeight.normal,
+        fontWeight: FontWeight.w800,
         fontSize: 16.0,
       );
-  String get bodyMediumFamily => 'amoret';
-  TextStyle get bodyMedium => TextStyle(
-        fontFamily: 'amoret',
+  String get bodyMediumFamily => 'Forum';
+  TextStyle get bodyMedium => GoogleFonts.forum(
         color: theme.primaryText,
-        fontWeight: FontWeight.normal,
+        fontWeight: FontWeight.w900,
         fontSize: 14.0,
       );
-  String get bodySmallFamily => 'amoret';
-  TextStyle get bodySmall => TextStyle(
-        fontFamily: 'amoret',
+  String get bodySmallFamily => 'Forum';
+  TextStyle get bodySmall => GoogleFonts.forum(
         color: theme.primaryText,
-        fontWeight: FontWeight.normal,
+        fontWeight: FontWeight.bold,
         fontSize: 12.0,
       );
 }
@@ -320,21 +305,21 @@ class DarkModeTheme extends FlutterFlowTheme {
   @Deprecated('Use tertiary instead')
   Color get tertiaryColor => tertiary;
 
-  late Color primary = const Color(0xFF826040);
-  late Color secondary = const Color(0xFF877E5D);
+  late Color primary = const Color(0xFF8C8A87);
+  late Color secondary = const Color(0xFFBC915C);
   late Color tertiary = const Color(0xFF230A06);
   late Color alternate = const Color(0xFF65635B);
-  late Color primaryText = const Color(0xB2262D34);
-  late Color secondaryText = const Color(0xFFE4E0D4);
-  late Color primaryBackground = const Color(0xFFE3DFD3);
-  late Color secondaryBackground = const Color(0xFFC9BCA9);
-  late Color accent1 = const Color(0x4CCD7800);
-  late Color accent2 = const Color(0x4E08A723);
-  late Color accent3 = const Color(0xFFE16651);
-  late Color accent4 = const Color(0xB2262D34);
-  late Color success = const Color(0xFF249689);
-  late Color warning = const Color(0xFFF9CF58);
-  late Color error = const Color(0xFFFF5963);
+  late Color primaryText = const Color(0xFF2E2C2D);
+  late Color secondaryText = const Color(0xFFF9F7F4);
+  late Color primaryBackground = const Color(0xFFFFF8F2);
+  late Color secondaryBackground = const Color(0xFFCABDAA);
+  late Color accent1 = const Color(0xFF8F7B70);
+  late Color accent2 = const Color(0xFFB79C7A);
+  late Color accent3 = const Color(0xFFA78C6A);
+  late Color accent4 = const Color(0xFF7A4C3A);
+  late Color success = const Color(0xFF6A9B60);
+  late Color warning = const Color(0xFFC9A430);
+  late Color error = const Color(0xFFA44B4B);
   late Color info = const Color(0xFFFFFFFF);
 
   late Color mossGreen = Color(0xFF9F9056);
