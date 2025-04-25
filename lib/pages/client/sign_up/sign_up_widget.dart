@@ -182,21 +182,17 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                         decoration: InputDecoration(
                           labelText: 'Имя',
                           labelStyle:
-                              FlutterFlowTheme.of(context).bodyLarge.override(
+                              FlutterFlowTheme.of(context).titleLarge.override(
                                     font: GoogleFonts.forum(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .bodyLarge
-                                          .fontWeight,
+                                      fontWeight: FontWeight.w600,
                                       fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyLarge
+                                          .titleLarge
                                           .fontStyle,
                                     ),
                                     letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .bodyLarge
-                                        .fontWeight,
+                                    fontWeight: FontWeight.w600,
                                     fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyLarge
+                                        .titleLarge
                                         .fontStyle,
                                   ),
                           enabledBorder: OutlineInputBorder(
@@ -274,21 +270,17 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                         decoration: InputDecoration(
                           labelText: 'Фамилия',
                           labelStyle:
-                              FlutterFlowTheme.of(context).bodyLarge.override(
+                              FlutterFlowTheme.of(context).titleLarge.override(
                                     font: GoogleFonts.forum(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .bodyLarge
-                                          .fontWeight,
+                                      fontWeight: FontWeight.w600,
                                       fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyLarge
+                                          .titleLarge
                                           .fontStyle,
                                     ),
                                     letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .bodyLarge
-                                        .fontWeight,
+                                    fontWeight: FontWeight.w600,
                                     fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyLarge
+                                        .titleLarge
                                         .fontStyle,
                                   ),
                           hintStyle:
@@ -384,21 +376,17 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                         decoration: InputDecoration(
                           labelText: 'Телефон',
                           labelStyle:
-                              FlutterFlowTheme.of(context).bodyLarge.override(
+                              FlutterFlowTheme.of(context).titleLarge.override(
                                     font: GoogleFonts.forum(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .bodyLarge
-                                          .fontWeight,
+                                      fontWeight: FontWeight.w600,
                                       fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyLarge
+                                          .titleLarge
                                           .fontStyle,
                                     ),
                                     letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .bodyLarge
-                                        .fontWeight,
+                                    fontWeight: FontWeight.w600,
                                     fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyLarge
+                                        .titleLarge
                                         .fontStyle,
                                   ),
                           hintStyle:
@@ -451,21 +439,17 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                           fillColor:
                               FlutterFlowTheme.of(context).secondaryBackground,
                         ),
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        style: FlutterFlowTheme.of(context).titleLarge.override(
                               font: GoogleFonts.forum(
-                                fontWeight: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .fontWeight,
+                                fontWeight: FontWeight.w600,
                                 fontStyle: FlutterFlowTheme.of(context)
-                                    .bodyMedium
+                                    .titleLarge
                                     .fontStyle,
                               ),
                               letterSpacing: 0.0,
-                              fontWeight: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .fontWeight,
+                              fontWeight: FontWeight.w600,
                               fontStyle: FlutterFlowTheme.of(context)
-                                  .bodyMedium
+                                  .titleLarge
                                   .fontStyle,
                             ),
                         maxLength: 12,
