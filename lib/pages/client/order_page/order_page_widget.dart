@@ -266,18 +266,18 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                                       ) * 10).round() / 10).toString()} р.',
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyLarge
+                                                      .titleLarge
                                                       .override(
                                                         font: GoogleFonts.forum(
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
                                                                       context)
-                                                                  .bodyLarge
+                                                                  .titleLarge
                                                                   .fontWeight,
                                                           fontStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
-                                                                  .bodyLarge
+                                                                  .titleLarge
                                                                   .fontStyle,
                                                         ),
                                                         color:
@@ -288,12 +288,12 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyLarge
+                                                                .titleLarge
                                                                 .fontWeight,
                                                         fontStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyLarge
+                                                                .titleLarge
                                                                 .fontStyle,
                                                       ),
                                                 ),
