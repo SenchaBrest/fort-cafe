@@ -150,6 +150,45 @@ flutter:
     - assets/jsons/
 
   fonts:
+    - family: 'quich sans'
+      fonts:
+        - asset: assets/fonts/Fontspring-DEMO-quichesans-thin.otf
+          weight: 100
+        - asset: assets/fonts/Fontspring-DEMO-quichesans-thinitalic.otf
+          weight: 100
+          style: italic
+        - asset: assets/fonts/Fontspring-DEMO-quichesans-light.otf
+          weight: 300
+        - asset: assets/fonts/Fontspring-DEMO-quichesans-lightitalic.otf
+          weight: 300
+          style: italic
+        - asset: assets/fonts/Fontspring-DEMO-quichesans-regular.otf
+        - asset: assets/fonts/Fontspring-DEMO-quichesans-italic.otf
+          style: italic
+        - asset: assets/fonts/Fontspring-DEMO-quichesans-medium.otf
+          weight: 500
+        - asset: assets/fonts/Fontspring-DEMO-quichesans-mediumitalic.otf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/Fontspring-DEMO-quichesans-bold.otf
+          weight: 700
+        - asset: assets/fonts/Fontspring-DEMO-quichesans-bolditalic.otf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/Fontspring-DEMO-quichesans-extrabold.otf
+          weight: 800
+        - asset: assets/fonts/Fontspring-DEMO-quichesans-extrabolditalic.otf
+          weight: 800
+          style: italic
+        - asset: assets/fonts/Fontspring-DEMO-quichesans-black.otf
+          weight: 900
+        - asset: assets/fonts/Fontspring-DEMO-quichesans-blackitalic.otf
+          weight: 900
+          style: italic
+    - family: 'amoret'
+      fonts:
+        - asset: assets/fonts/AmoretSans.ttf
+
     - family: Load
       fonts:
         - asset: assets/fonts/load.ttf

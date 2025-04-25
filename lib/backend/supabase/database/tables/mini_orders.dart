@@ -26,9 +26,6 @@ class MiniOrdersRow extends SupabaseDataRow {
   int get quantity => getField<int>('quantity')!;
   set quantity(int value) => setField<int>('quantity', value);
 
-  int? get workerId => getField<int>('workerId');
-  set workerId(int? value) => setField<int>('workerId', value);
-
   String get status => getField<String>('status')!;
   set status(String value) => setField<String>('status', value);
 

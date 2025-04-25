@@ -105,7 +105,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
             'Контактная информация',
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).headlineSmall.override(
-                  fontFamily: 'Roboto',
+                  fontFamily: 'amoret',
                   letterSpacing: 0.0,
                 ),
           ),
@@ -118,7 +118,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                 Text(
                   'Другому человеку:',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Inter',
+                        fontFamily: 'amoret',
                         letterSpacing: 0.0,
                       ),
                 ),
@@ -164,7 +164,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                           labelText: 'Имя',
                           labelStyle:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'amoret',
                                     letterSpacing: 0.0,
                                   ),
                           enabledBorder: OutlineInputBorder(
@@ -200,13 +200,24 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                               FlutterFlowTheme.of(context).secondaryBackground,
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Inter',
+                              fontFamily: 'amoret',
                               letterSpacing: 0.0,
                             ),
                         minLines: 1,
                         cursorColor: FlutterFlowTheme.of(context).primaryText,
                         validator: _model.textFieldNameTextController1Validator
                             .asValidator(context),
+                        inputFormatters: [
+                          if (!isAndroid && !isiOS)
+                            TextInputFormatter.withFunction(
+                                (oldValue, newValue) {
+                              return TextEditingValue(
+                                selection: newValue.selection,
+                                text: newValue.text
+                                    .toCapitalization(TextCapitalization.words),
+                              );
+                            }),
+                        ],
                       ),
                       TextFormField(
                         controller: _model.textFieldSurnameTextController1,
@@ -219,12 +230,12 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                           labelText: 'Фамилия',
                           labelStyle:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'amoret',
                                     letterSpacing: 0.0,
                                   ),
                           hintStyle:
                               FlutterFlowTheme.of(context).bodyLarge.override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'amoret',
                                     letterSpacing: 0.0,
                                   ),
                           enabledBorder: OutlineInputBorder(
@@ -260,7 +271,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                               FlutterFlowTheme.of(context).secondaryBackground,
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Inter',
+                              fontFamily: 'amoret',
                               letterSpacing: 0.0,
                             ),
                         minLines: 1,
@@ -268,6 +279,17 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                         validator: _model
                             .textFieldSurnameTextController1Validator
                             .asValidator(context),
+                        inputFormatters: [
+                          if (!isAndroid && !isiOS)
+                            TextInputFormatter.withFunction(
+                                (oldValue, newValue) {
+                              return TextEditingValue(
+                                selection: newValue.selection,
+                                text: newValue.text
+                                    .toCapitalization(TextCapitalization.words),
+                              );
+                            }),
+                        ],
                       ),
                       TextFormField(
                         controller: _model.textFieldPhoneTextController1,
@@ -279,12 +301,12 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                           labelText: 'Телефон',
                           labelStyle:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'amoret',
                                     letterSpacing: 0.0,
                                   ),
                           hintStyle:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'amoret',
                                     letterSpacing: 0.0,
                                   ),
                           enabledBorder: OutlineInputBorder(
@@ -320,7 +342,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                               FlutterFlowTheme.of(context).secondaryBackground,
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Inter',
+                              fontFamily: 'amoret',
                               letterSpacing: 0.0,
                             ),
                         maxLength: 12,
@@ -355,7 +377,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                           labelText: 'Имя',
                           labelStyle:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'amoret',
                                     letterSpacing: 0.0,
                                   ),
                           enabledBorder: OutlineInputBorder(
@@ -391,13 +413,24 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                               FlutterFlowTheme.of(context).secondaryBackground,
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Inter',
+                              fontFamily: 'amoret',
                               letterSpacing: 0.0,
                             ),
                         minLines: 1,
                         cursorColor: FlutterFlowTheme.of(context).primaryText,
                         validator: _model.textFieldNameTextController2Validator
                             .asValidator(context),
+                        inputFormatters: [
+                          if (!isAndroid && !isiOS)
+                            TextInputFormatter.withFunction(
+                                (oldValue, newValue) {
+                              return TextEditingValue(
+                                selection: newValue.selection,
+                                text: newValue.text
+                                    .toCapitalization(TextCapitalization.words),
+                              );
+                            }),
+                        ],
                       ),
                       TextFormField(
                         controller: _model.textFieldSurnameTextController2,
@@ -410,12 +443,12 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                           labelText: 'Фамилия',
                           labelStyle:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'amoret',
                                     letterSpacing: 0.0,
                                   ),
                           hintStyle:
                               FlutterFlowTheme.of(context).bodyLarge.override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'amoret',
                                     letterSpacing: 0.0,
                                   ),
                           enabledBorder: OutlineInputBorder(
@@ -451,7 +484,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                               FlutterFlowTheme.of(context).secondaryBackground,
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Inter',
+                              fontFamily: 'amoret',
                               letterSpacing: 0.0,
                             ),
                         minLines: 1,
@@ -459,6 +492,17 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                         validator: _model
                             .textFieldSurnameTextController2Validator
                             .asValidator(context),
+                        inputFormatters: [
+                          if (!isAndroid && !isiOS)
+                            TextInputFormatter.withFunction(
+                                (oldValue, newValue) {
+                              return TextEditingValue(
+                                selection: newValue.selection,
+                                text: newValue.text
+                                    .toCapitalization(TextCapitalization.words),
+                              );
+                            }),
+                        ],
                       ),
                       TextFormField(
                         controller: _model.textFieldPhoneTextController2,
@@ -470,12 +514,12 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                           labelText: 'Телефон',
                           labelStyle:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'amoret',
                                     letterSpacing: 0.0,
                                   ),
                           hintStyle:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'amoret',
                                     letterSpacing: 0.0,
                                   ),
                           enabledBorder: OutlineInputBorder(
@@ -511,7 +555,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                               FlutterFlowTheme.of(context).secondaryBackground,
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Inter',
+                              fontFamily: 'amoret',
                               letterSpacing: 0.0,
                             ),
                         maxLength: 12,
@@ -558,7 +602,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).primary,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                          fontFamily: 'Roboto',
+                          fontFamily: 'amoret',
                           color: Colors.white,
                           letterSpacing: 0.0,
                         ),
@@ -588,7 +632,10 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                             widget.cart!.map((e) => e.toString()).toList()),
                         'orderId': _model.order1?.id,
                       });
-                      while (_model.miniOrderCounter! < widget.cart!.length) {
+                      for (int loop1Index = 0;
+                          loop1Index < widget.cart!.length;
+                          loop1Index++) {
+                        final currentLoop1Item = widget.cart![loop1Index];
                         await MiniOrdersTable().insert({
                           'orderId': _model.order1?.id,
                           'itemId': getJsonField(
@@ -602,7 +649,6 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                             r'''$.count''',
                           ),
                         });
-                        _model.miniOrderCounter = _model.miniOrderCounter! + 1;
                       }
                       Navigator.pop(context);
                     } else {
@@ -654,7 +700,10 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                             widget.cart!.map((e) => e.toString()).toList()),
                         'orderId': _model.order2?.id,
                       });
-                      while (_model.miniOrderCounter! < widget.cart!.length) {
+                      for (int loop1Index = 0;
+                          loop1Index < widget.cart!.length;
+                          loop1Index++) {
+                        final currentLoop1Item = widget.cart![loop1Index];
                         await MiniOrdersTable().insert({
                           'orderId': _model.order2?.id,
                           'itemId': getJsonField(
@@ -668,7 +717,6 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                             r'''$.count''',
                           ),
                         });
-                        _model.miniOrderCounter = _model.miniOrderCounter! + 1;
                       }
                       Navigator.pop(context);
                     }
@@ -689,7 +737,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).secondary,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                          fontFamily: 'Roboto',
+                          fontFamily: 'amoret',
                           color: FlutterFlowTheme.of(context).info,
                           letterSpacing: 0.0,
                         ),

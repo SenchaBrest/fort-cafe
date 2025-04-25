@@ -165,9 +165,8 @@ class _ItemEditWidgetState extends State<ItemEditWidget> {
                         'name',
                       ),
                       maxLines: 1,
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Inter',
-                            fontSize: 8.0,
+                      style: FlutterFlowTheme.of(context).bodySmall.override(
+                            fontFamily: 'amoret',
                             letterSpacing: 0.0,
                           ),
                     ),
@@ -178,8 +177,8 @@ class _ItemEditWidgetState extends State<ItemEditWidget> {
                         AutoSizeText(
                           '${widget.price?.toString()} р.',
                           style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
+                              FlutterFlowTheme.of(context).bodySmall.override(
+                                    fontFamily: 'amoret',
                                     letterSpacing: 0.0,
                                   ),
                         ),
@@ -189,10 +188,9 @@ class _ItemEditWidgetState extends State<ItemEditWidget> {
                             'x0',
                           ),
                           style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
+                              FlutterFlowTheme.of(context).bodySmall.override(
+                                    fontFamily: 'amoret',
                                     color: FlutterFlowTheme.of(context).primary,
-                                    fontSize: 18.0,
                                     letterSpacing: 0.0,
                                   ),
                         ),

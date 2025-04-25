@@ -90,7 +90,7 @@ class _ConfirmWidgetState extends State<ConfirmWidget> {
                     }
                   }(),
                   style: FlutterFlowTheme.of(context).headlineSmall.override(
-                        fontFamily: 'Roboto',
+                        fontFamily: 'amoret',
                         letterSpacing: 0.0,
                       ),
                 ),
@@ -120,7 +120,7 @@ class _ConfirmWidgetState extends State<ConfirmWidget> {
                         textStyle: FlutterFlowTheme.of(context)
                             .titleSmall
                             .override(
-                              fontFamily: 'Roboto',
+                              fontFamily: 'amoret',
                               color: FlutterFlowTheme.of(context).primaryText,
                               letterSpacing: 0.0,
                             ),
@@ -158,7 +158,7 @@ class _ConfirmWidgetState extends State<ConfirmWidget> {
                         color: FlutterFlowTheme.of(context).secondary,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
-                                  fontFamily: 'Roboto',
+                                  fontFamily: 'amoret',
                                   color: FlutterFlowTheme.of(context).info,
                                   letterSpacing: 0.0,
                                 ),

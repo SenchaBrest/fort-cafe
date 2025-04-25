@@ -62,7 +62,7 @@ class _NothingWidgetState extends State<NothingWidget> {
           alignment: AlignmentDirectional(0.0, 0.0),
           child: Icon(
             Icons.sentiment_dissatisfied,
-            color: FlutterFlowTheme.of(context).secondaryText,
+            color: FlutterFlowTheme.of(context).primaryText,
             size: 64.0,
           ),
         ),

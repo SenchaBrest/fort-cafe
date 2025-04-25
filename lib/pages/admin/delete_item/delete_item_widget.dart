@@ -81,7 +81,7 @@ class _DeleteItemWidgetState extends State<DeleteItemWidget> {
                 child: Text(
                   'Удалить ${widget.name}?',
                   style: FlutterFlowTheme.of(context).headlineSmall.override(
-                        fontFamily: 'Roboto',
+                        fontFamily: 'amoret',
                         letterSpacing: 0.0,
                       ),
                 ),
@@ -111,7 +111,7 @@ class _DeleteItemWidgetState extends State<DeleteItemWidget> {
                         textStyle: FlutterFlowTheme.of(context)
                             .titleSmall
                             .override(
-                              fontFamily: 'Roboto',
+                              fontFamily: 'amoret',
                               color: FlutterFlowTheme.of(context).primaryText,
                               letterSpacing: 0.0,
                             ),
@@ -146,7 +146,7 @@ class _DeleteItemWidgetState extends State<DeleteItemWidget> {
                         color: FlutterFlowTheme.of(context).secondary,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
-                                  fontFamily: 'Roboto',
+                                  fontFamily: 'amoret',
                                   color: FlutterFlowTheme.of(context).info,
                                   letterSpacing: 0.0,
                                 ),

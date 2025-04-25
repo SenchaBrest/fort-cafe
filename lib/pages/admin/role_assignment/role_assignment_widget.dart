@@ -75,7 +75,7 @@ class _RoleAssignmentWidgetState extends State<RoleAssignmentWidget> {
               Text(
                 widget.userNameAndSurname!,
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Inter',
+                      fontFamily: 'amoret',
                       letterSpacing: 0.0,
                     ),
               ),
@@ -104,7 +104,7 @@ class _RoleAssignmentWidgetState extends State<RoleAssignmentWidget> {
                       EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: FlutterFlowTheme.of(context).secondary,
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                        fontFamily: 'Roboto',
+                        fontFamily: 'amoret',
                         color: FlutterFlowTheme.of(context).info,
                         letterSpacing: 0.0,
                       ),
@@ -141,7 +141,7 @@ class _RoleAssignmentWidgetState extends State<RoleAssignmentWidget> {
                       EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: FlutterFlowTheme.of(context).primary,
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                        fontFamily: 'Roboto',
+                        fontFamily: 'amoret',
                         color: FlutterFlowTheme.of(context).info,
                         letterSpacing: 0.0,
                       ),
@@ -176,10 +176,10 @@ class _RoleAssignmentWidgetState extends State<RoleAssignmentWidget> {
                   padding: EdgeInsets.all(8.0),
                   iconPadding:
                       EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                  color: Color(0xFF102C54),
+                  color: FlutterFlowTheme.of(context).spaceCadet,
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                        fontFamily: 'Roboto',
-                        color: FlutterFlowTheme.of(context).primaryText,
+                        fontFamily: 'amoret',
+                        color: FlutterFlowTheme.of(context).secondaryText,
                         letterSpacing: 0.0,
                       ),
                   elevation: 0.0,
@@ -216,7 +216,7 @@ class _RoleAssignmentWidgetState extends State<RoleAssignmentWidget> {
                       EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: FlutterFlowTheme.of(context).tertiary,
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                        fontFamily: 'Roboto',
+                        fontFamily: 'amoret',
                         color: FlutterFlowTheme.of(context).info,
                         letterSpacing: 0.0,
                       ),

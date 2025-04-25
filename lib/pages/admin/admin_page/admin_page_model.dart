@@ -1,10 +1,8 @@
-import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/pages/admin/item_edit/item_edit_widget.dart';
 import '/index.dart';
 import 'admin_page_widget.dart' show AdminPageWidget;
-import 'dart:async';
 import 'package:flutter/material.dart';
 
 class AdminPageModel extends FlutterFlowModel<AdminPageWidget> {
@@ -20,9 +18,7 @@ class AdminPageModel extends FlutterFlowModel<AdminPageWidget> {
 
   ///  State fields for stateful widgets in this page.
 
-  Completer<ApiCallResponse>? apiRequestCompleter;
-  Completer<List<FlagsRow>>? requestCompleter1;
-  Completer<List<UsersRow>>? requestCompleter2;
+  Stream<List<ItemsRow>>? adminPageSupabaseStream;
   // State field(s) for TabBar widget.
   TabController? tabBarController;
   int get tabBarCurrentIndex =>
@@ -32,8 +28,10 @@ class AdminPageModel extends FlutterFlowModel<AdminPageWidget> {
 
   // Models for itemEdit dynamic component.
   late FlutterFlowDynamicModels<ItemEditModel> itemEditModels;
+  Stream<List<FlagsRow>>? containerSupabaseStream;
   // State field(s) for Switch widget.
   bool? switchValue;
+  Stream<List<UsersRow>>? listViewSupabaseStream;
 
   @override
   void initState(BuildContext context) {
@@ -44,51 +42,5 @@ class AdminPageModel extends FlutterFlowModel<AdminPageWidget> {
   void dispose() {
     tabBarController?.dispose();
     itemEditModels.dispose();
-  }
-
-  /// Additional helper methods.
-  Future waitForApiRequestCompleted({
-    double minWait = 0,
-    double maxWait = double.infinity,
-  }) async {
-    final stopwatch = Stopwatch()..start();
-    while (true) {
-      await Future.delayed(Duration(milliseconds: 50));
-      final timeElapsed = stopwatch.elapsedMilliseconds;
-      final requestComplete = apiRequestCompleter?.isCompleted ?? false;
-      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
-        break;
-      }
-    }
-  }
-
-  Future waitForRequestCompleted1({
-    double minWait = 0,
-    double maxWait = double.infinity,
-  }) async {
-    final stopwatch = Stopwatch()..start();
-    while (true) {
-      await Future.delayed(Duration(milliseconds: 50));
-      final timeElapsed = stopwatch.elapsedMilliseconds;
-      final requestComplete = requestCompleter1?.isCompleted ?? false;
-      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
-        break;
-      }
-    }
-  }
-
-  Future waitForRequestCompleted2({
-    double minWait = 0,
-    double maxWait = double.infinity,
-  }) async {
-    final stopwatch = Stopwatch()..start();
-    while (true) {
-      await Future.delayed(Duration(milliseconds: 50));
-      final timeElapsed = stopwatch.elapsedMilliseconds;
-      final requestComplete = requestCompleter2?.isCompleted ?? false;
-      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
-        break;
-      }
-    }
   }
 }

@@ -86,7 +86,7 @@ class _MiniConfirmWidgetState extends State<MiniConfirmWidget> {
                 child: Text(
                   '${widget.status}?',
                   style: FlutterFlowTheme.of(context).headlineSmall.override(
-                        fontFamily: 'Roboto',
+                        fontFamily: 'amoret',
                         letterSpacing: 0.0,
                       ),
                 ),
@@ -116,7 +116,7 @@ class _MiniConfirmWidgetState extends State<MiniConfirmWidget> {
                         textStyle: FlutterFlowTheme.of(context)
                             .titleSmall
                             .override(
-                              fontFamily: 'Roboto',
+                              fontFamily: 'amoret',
                               color: FlutterFlowTheme.of(context).primaryText,
                               letterSpacing: 0.0,
                             ),
@@ -133,7 +133,6 @@ class _MiniConfirmWidgetState extends State<MiniConfirmWidget> {
                         if (widget.nextStatus == Status.pending.name) {
                           await MiniOrdersTable().update(
                             data: {
-                              'workerId': null,
                               'status': Status.pending.name,
                             },
                             matchingRows: (rows) => rows.eqOrNull(
@@ -145,7 +144,6 @@ class _MiniConfirmWidgetState extends State<MiniConfirmWidget> {
                             Status.inProgress.name) {
                           await MiniOrdersTable().update(
                             data: {
-                              'workerId': widget.workerId,
                               'status': Status.inProgress.name,
                             },
                             matchingRows: (rows) => rows.eqOrNull(
@@ -157,7 +155,6 @@ class _MiniConfirmWidgetState extends State<MiniConfirmWidget> {
                             Status.completed.name) {
                           await MiniOrdersTable().update(
                             data: {
-                              'workerId': widget.workerId,
                               'status': Status.completed.name,
                             },
                             matchingRows: (rows) => rows.eqOrNull(
@@ -182,7 +179,7 @@ class _MiniConfirmWidgetState extends State<MiniConfirmWidget> {
                         color: FlutterFlowTheme.of(context).secondary,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
-                                  fontFamily: 'Roboto',
+                                  fontFamily: 'amoret',
                                   color: FlutterFlowTheme.of(context).info,
                                   letterSpacing: 0.0,
                                 ),

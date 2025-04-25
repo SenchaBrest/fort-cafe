@@ -216,8 +216,6 @@ dynamic deserializeParam<T>(
             return FlagsRow(data);
           case SummariesRow:
             return SummariesRow(data);
-          case WorkingTimeRow:
-            return WorkingTimeRow(data);
           case UsersRow:
             return UsersRow(data);
           case MiniOrdersRow:

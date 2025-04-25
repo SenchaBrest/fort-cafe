@@ -12,6 +12,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'create_product_model.dart';
 export 'create_product_model.dart';
@@ -98,7 +99,9 @@ class _CreateProductWidgetState extends State<CreateProductWidget> {
           ),
           0.0),
       child: Container(
-        decoration: BoxDecoration(),
+        decoration: BoxDecoration(
+          color: FlutterFlowTheme.of(context).primaryBackground,
+        ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -228,7 +231,7 @@ class _CreateProductWidgetState extends State<CreateProductWidget> {
                           decrementIconBuilder: (enabled) => Icon(
                             Icons.remove_rounded,
                             color: enabled
-                                ? FlutterFlowTheme.of(context).secondaryText
+                                ? FlutterFlowTheme.of(context).tertiary
                                 : FlutterFlowTheme.of(context).alternate,
                             size: 24.0,
                           ),
@@ -244,7 +247,7 @@ class _CreateProductWidgetState extends State<CreateProductWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .titleLarge
                                 .override(
-                                  fontFamily: 'Roboto',
+                                  fontFamily: 'amoret',
                                   letterSpacing: 0.0,
                                 ),
                           ),
@@ -269,38 +272,46 @@ class _CreateProductWidgetState extends State<CreateProductWidget> {
             Text(
               'Категория:',
               style: FlutterFlowTheme.of(context).bodyMedium.override(
-                    fontFamily: 'Inter',
+                    fontFamily: 'amoret',
                     letterSpacing: 0.0,
                   ),
             ),
-            FlutterFlowRadioButton(
-              options: ['Выбрать из существующих', 'Создать новую'].toList(),
-              onChanged: (val) => safeSetState(() {}),
-              controller: _model.radioButtonValueController ??=
-                  FormFieldController<String>(valueOrDefault<String>(
-                widget.categories != null && (widget.categories)!.isNotEmpty
-                    ? 'Выбрать из существующих'
-                    : 'Создать новую',
-                'Создать новую',
-              )),
-              optionHeight: 32.0,
-              textStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                    fontFamily: 'Inter',
-                    letterSpacing: 0.0,
-                  ),
-              selectedTextStyle:
-                  FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Inter',
-                        letterSpacing: 0.0,
-                      ),
-              buttonPosition: RadioButtonPosition.left,
-              direction: Axis.vertical,
-              radioButtonColor: FlutterFlowTheme.of(context).primary,
-              inactiveRadioButtonColor:
-                  FlutterFlowTheme.of(context).secondaryText,
-              toggleable: false,
-              horizontalAlignment: WrapAlignment.start,
-              verticalAlignment: WrapCrossAlignment.start,
+            Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: FlutterFlowTheme.of(context).secondaryBackground,
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              child: FlutterFlowRadioButton(
+                options: ['Выбрать из существующих', 'Создать новую'].toList(),
+                onChanged: (val) => safeSetState(() {}),
+                controller: _model.radioButtonValueController ??=
+                    FormFieldController<String>(valueOrDefault<String>(
+                  widget.categories != null && (widget.categories)!.isNotEmpty
+                      ? 'Выбрать из существующих'
+                      : 'Создать новую',
+                  'Создать новую',
+                )),
+                optionHeight: 32.0,
+                textStyle: FlutterFlowTheme.of(context).labelMedium.override(
+                      fontFamily: 'amoret',
+                      letterSpacing: 0.0,
+                    ),
+                selectedTextStyle:
+                    FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'amoret',
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          letterSpacing: 0.0,
+                        ),
+                buttonPosition: RadioButtonPosition.left,
+                direction: Axis.vertical,
+                radioButtonColor: FlutterFlowTheme.of(context).primary,
+                inactiveRadioButtonColor:
+                    FlutterFlowTheme.of(context).primaryText,
+                toggleable: false,
+                horizontalAlignment: WrapAlignment.start,
+                verticalAlignment: WrapCrossAlignment.start,
+              ),
             ),
             Stack(
               children: [
@@ -325,13 +336,13 @@ class _CreateProductWidgetState extends State<CreateProductWidget> {
                     width: double.infinity,
                     height: 49.0,
                     textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Inter',
+                          fontFamily: 'amoret',
                           letterSpacing: 0.0,
                         ),
                     hintText: 'Выбрать категорию...',
                     icon: Icon(
                       Icons.keyboard_arrow_down_rounded,
-                      color: FlutterFlowTheme.of(context).secondaryText,
+                      color: FlutterFlowTheme.of(context).primaryText,
                       size: 24.0,
                     ),
                     fillColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -373,7 +384,7 @@ class _CreateProductWidgetState extends State<CreateProductWidget> {
                         labelText: 'Категория',
                         labelStyle:
                             FlutterFlowTheme.of(context).bodyMedium.override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'amoret',
                                   letterSpacing: 0.0,
                                 ),
                         enabledBorder: OutlineInputBorder(
@@ -409,13 +420,23 @@ class _CreateProductWidgetState extends State<CreateProductWidget> {
                             FlutterFlowTheme.of(context).secondaryBackground,
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Inter',
+                            fontFamily: 'amoret',
                             letterSpacing: 0.0,
                           ),
                       minLines: 1,
                       cursorColor: FlutterFlowTheme.of(context).primaryText,
                       validator: _model.textFieldTypeTextControllerValidator
                           .asValidator(context),
+                      inputFormatters: [
+                        if (!isAndroid && !isiOS)
+                          TextInputFormatter.withFunction((oldValue, newValue) {
+                            return TextEditingValue(
+                              selection: newValue.selection,
+                              text: newValue.text
+                                  .toCapitalization(TextCapitalization.words),
+                            );
+                          }),
+                      ],
                     ),
                   ),
               ],
@@ -444,11 +465,11 @@ class _CreateProductWidgetState extends State<CreateProductWidget> {
                 decoration: InputDecoration(
                   labelText: 'Название',
                   labelStyle: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Inter',
+                        fontFamily: 'amoret',
                         letterSpacing: 0.0,
                       ),
                   errorStyle: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Inter',
+                        fontFamily: 'amoret',
                         color: FlutterFlowTheme.of(context).error,
                         letterSpacing: 0.0,
                       ),
@@ -484,13 +505,23 @@ class _CreateProductWidgetState extends State<CreateProductWidget> {
                   fillColor: FlutterFlowTheme.of(context).secondaryBackground,
                 ),
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Inter',
+                      fontFamily: 'amoret',
                       letterSpacing: 0.0,
                     ),
                 minLines: 1,
                 cursorColor: FlutterFlowTheme.of(context).primaryText,
                 validator: _model.textFieldNameTextControllerValidator
                     .asValidator(context),
+                inputFormatters: [
+                  if (!isAndroid && !isiOS)
+                    TextInputFormatter.withFunction((oldValue, newValue) {
+                      return TextEditingValue(
+                        selection: newValue.selection,
+                        text: newValue.text
+                            .toCapitalization(TextCapitalization.words),
+                      );
+                    }),
+                ],
               ),
             ),
             Row(
@@ -501,7 +532,7 @@ class _CreateProductWidgetState extends State<CreateProductWidget> {
                   child: Text(
                     'Цена: ${_model.countControllerValue2?.toString()}.${_model.countControllerValue3?.toString()} р.',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Inter',
+                          fontFamily: 'amoret',
                           letterSpacing: 0.0,
                         ),
                   ),
@@ -519,7 +550,7 @@ class _CreateProductWidgetState extends State<CreateProductWidget> {
                       decrementIconBuilder: (enabled) => Icon(
                         Icons.remove_rounded,
                         color: enabled
-                            ? FlutterFlowTheme.of(context).secondaryText
+                            ? FlutterFlowTheme.of(context).tertiary
                             : FlutterFlowTheme.of(context).alternate,
                         size: 24.0,
                       ),
@@ -533,7 +564,7 @@ class _CreateProductWidgetState extends State<CreateProductWidget> {
                       countBuilder: (count) => Text(
                         count.toString(),
                         style: FlutterFlowTheme.of(context).titleLarge.override(
-                              fontFamily: 'Roboto',
+                              fontFamily: 'amoret',
                               letterSpacing: 0.0,
                             ),
                       ),
@@ -564,7 +595,7 @@ class _CreateProductWidgetState extends State<CreateProductWidget> {
                       decrementIconBuilder: (enabled) => Icon(
                         Icons.remove_rounded,
                         color: enabled
-                            ? FlutterFlowTheme.of(context).secondaryText
+                            ? FlutterFlowTheme.of(context).tertiary
                             : FlutterFlowTheme.of(context).alternate,
                         size: 24.0,
                       ),
@@ -578,7 +609,7 @@ class _CreateProductWidgetState extends State<CreateProductWidget> {
                       countBuilder: (count) => Text(
                         count.toString(),
                         style: FlutterFlowTheme.of(context).titleLarge.override(
-                              fontFamily: 'Roboto',
+                              fontFamily: 'amoret',
                               letterSpacing: 0.0,
                             ),
                       ),
@@ -623,7 +654,7 @@ class _CreateProductWidgetState extends State<CreateProductWidget> {
                       color: FlutterFlowTheme.of(context).primary,
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(
-                                fontFamily: 'Roboto',
+                                fontFamily: 'amoret',
                                 color: Colors.white,
                                 letterSpacing: 0.0,
                               ),
@@ -777,7 +808,7 @@ class _CreateProductWidgetState extends State<CreateProductWidget> {
                       color: FlutterFlowTheme.of(context).secondary,
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(
-                                fontFamily: 'Roboto',
+                                fontFamily: 'amoret',
                                 color: FlutterFlowTheme.of(context).info,
                                 letterSpacing: 0.0,
                               ),

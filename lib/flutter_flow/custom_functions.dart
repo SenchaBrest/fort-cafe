@@ -11,12 +11,6 @@ import 'uploaded_file.dart';
 import '/backend/schema/enums/enums.dart';
 import '/backend/supabase/supabase.dart';
 
-List<String> getUniqueCategories(List<String>? categories) {
-  final unique = categories?.toSet().toList() ?? [];
-  unique.sort(); // сортировка по алфавиту
-  return unique;
-}
-
 List<dynamic>? addItemToCart(
   List<dynamic>? cart,
   String id,
@@ -45,7 +39,7 @@ List<dynamic>? addItemToCart(
   return cart;
 }
 
-List<dynamic>? removeItemFromCar(
+List<dynamic>? removeItemFromCart(
   List<dynamic>? cart,
   String id,
 ) {
@@ -87,18 +81,9 @@ double getTotaPrice(List<String> listOfItems) {
   );
 }
 
-Color stringToColor(String colorStringInput) {
-  final buffer = StringBuffer();
-  if (colorStringInput.length == 6 || colorStringInput.length == 7) {
-    buffer.write('FF');
-  }
-  buffer.write(colorStringInput.replaceFirst('#', ''));
-  return Color(int.parse(buffer.toString(), radix: 16));
-}
-
-List<dynamic>? removeItemFromCartCopy(
+List<dynamic>? deleteItem(
   List<dynamic>? cart,
-  List<String>? items,
+  String? items,
 ) {
   if (cart == null || items == null || items.isEmpty) {
     return cart;

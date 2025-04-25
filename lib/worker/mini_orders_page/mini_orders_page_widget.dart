@@ -140,7 +140,6 @@ class _MiniOrdersPageWidgetState extends State<MiniOrdersPageWidget> {
 
                 return ListView.separated(
                   padding: EdgeInsets.symmetric(vertical: 3.0),
-                  shrinkWrap: true,
                   scrollDirection: Axis.vertical,
                   itemCount: listViewMiniOrdersRowList.length,
                   separatorBuilder: (_, __) => SizedBox(height: 3.0),
@@ -292,7 +291,10 @@ class _MiniOrdersPageWidgetState extends State<MiniOrdersPageWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .titleLarge
                                                         .override(
-                                                          fontFamily: 'Roboto',
+                                                          fontFamily: 'amoret',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryText,
                                                           fontSize: 24.0,
                                                           letterSpacing: 0.0,
                                                         ),
@@ -303,7 +305,10 @@ class _MiniOrdersPageWidgetState extends State<MiniOrdersPageWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyLarge
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'amoret',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryText,
                                                           letterSpacing: 0.0,
                                                         ),
                                               ),

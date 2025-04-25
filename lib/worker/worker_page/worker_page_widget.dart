@@ -90,15 +90,16 @@ class _WorkerPageWidgetState extends State<WorkerPageWidget>
                           useToggleButtonStyle: true,
                           labelStyle:
                               FlutterFlowTheme.of(context).titleMedium.override(
-                                    fontFamily: 'Roboto',
+                                    fontFamily: 'amoret',
                                     letterSpacing: 0.0,
                                   ),
                           unselectedLabelStyle:
                               FlutterFlowTheme.of(context).titleMedium.override(
-                                    fontFamily: 'Roboto',
+                                    fontFamily: 'amoret',
                                     letterSpacing: 0.0,
                                   ),
-                          labelColor: FlutterFlowTheme.of(context).primaryText,
+                          labelColor:
+                              FlutterFlowTheme.of(context).secondaryText,
                           unselectedLabelColor:
                               FlutterFlowTheme.of(context).secondaryText,
                           backgroundColor: FlutterFlowTheme.of(context).accent1,
@@ -118,6 +119,8 @@ class _WorkerPageWidgetState extends State<WorkerPageWidget>
                               children: [
                                 Icon(
                                   Icons.close_sharp,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
                                 ),
                                 Tab(
                                   text: '',
