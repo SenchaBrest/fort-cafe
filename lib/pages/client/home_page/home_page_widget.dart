@@ -68,8 +68,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     return StreamBuilder<List<ItemsRow>>(
       stream: _model.homePageSupabaseStream ??= SupaFlow.client
           .from("items")
-          .stream(primaryKey: ['id']).map(
-              (list) => list.map((item) => ItemsRow(item)).toList()),
+          .stream(primaryKey: ['id'])
+          .eqOrNull(
+            'isActive',
+            true,
+          )
+          .map((list) => list.map((item) => ItemsRow(item)).toList()),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -347,8 +351,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                 itemsItem.name,
                                                             price:
                                                                 itemsItem.price,
-                                                            isActive: itemsItem
-                                                                .isActive,
+                                                            count:
+                                                                itemsItem.count,
                                                             add: () async {
                                                               await actions
                                                                   .hapticFeedbackForTelegramByType(

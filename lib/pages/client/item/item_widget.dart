@@ -21,8 +21,8 @@ class ItemWidget extends StatefulWidget {
     required this.add,
     required this.remove,
     required this.price,
-    required this.isActive,
     required this.delete,
+    required this.count,
   });
 
   final String? imageUrl;
@@ -30,8 +30,8 @@ class ItemWidget extends StatefulWidget {
   final Future Function()? add;
   final Future Function()? remove;
   final double? price;
-  final bool? isActive;
   final Future Function()? delete;
+  final int? count;
 
   @override
   State<ItemWidget> createState() => _ItemWidgetState();
@@ -356,7 +356,7 @@ class _ItemWidgetState extends State<ItemWidget> with TickerProviderStateMixin {
             ],
           ),
         ),
-        if (!widget.isActive!)
+        if (widget.count == 0)
           Opacity(
             opacity: 0.8,
             child: Container(

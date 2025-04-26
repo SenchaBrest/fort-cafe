@@ -318,16 +318,17 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                                 itemItem,
                                                 r'''$.count''',
                                               )) ||
-                                          !containerItemsRowList
-                                              .where((e) =>
-                                                  e.id ==
-                                                  getJsonField(
-                                                    itemItem,
-                                                    r'''$.id''',
-                                                  ).toString())
-                                              .toList()
-                                              .firstOrNull!
-                                              .isActive)
+                                          (containerItemsRowList
+                                                  .where((e) =>
+                                                      e.id ==
+                                                      getJsonField(
+                                                        itemItem,
+                                                        r'''$.id''',
+                                                      ).toString())
+                                                  .toList()
+                                                  .firstOrNull
+                                                  ?.count ==
+                                              0))
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
@@ -338,112 +339,43 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
-                                                Builder(
-                                                  builder: (context) {
-                                                    if ((containerItemsRowList
-                                                                .where((e) =>
-                                                                    e.id ==
-                                                                    getJsonField(
-                                                                      itemItem,
-                                                                      r'''$.id''',
-                                                                    ).toString())
-                                                                .toList()
-                                                                .firstOrNull!
-                                                                .count >
-                                                            0) &&
-                                                        containerItemsRowList
-                                                            .where((e) =>
-                                                                e.id ==
-                                                                getJsonField(
-                                                                  itemItem,
-                                                                  r'''$.id''',
-                                                                ).toString())
-                                                            .toList()
-                                                            .firstOrNull!
-                                                            .isActive) {
-                                                      return AutoSizeText(
-                                                        'В наличии всего ${containerItemsRowList.where((e) => e.id == getJsonField(
-                                                              itemItem,
-                                                              r'''$.id''',
-                                                            ).toString()).toList().firstOrNull?.count.toString()}, а вы заказываете ${getJsonField(
-                                                          itemItem,
-                                                          r'''$.count''',
-                                                        ).toString()}. Измените в меню количество, чтобы продолжить. ',
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        style:
+                                                AutoSizeText(
+                                                  'В наличии всего ${containerItemsRowList.where((e) => e.id == getJsonField(
+                                                        itemItem,
+                                                        r'''$.id''',
+                                                      ).toString()).toList().firstOrNull?.count.toString()}, а вы заказываете ${getJsonField(
+                                                    itemItem,
+                                                    r'''$.count''',
+                                                  ).toString()}. Измените в меню количество, чтобы продолжить. ',
+                                                  textAlign: TextAlign.center,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyLarge
+                                                      .override(
+                                                        font: GoogleFonts.forum(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyLarge
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyLarge
+                                                                  .fontStyle,
+                                                        ),
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .bodyLarge
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
-                                                                          .forum(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyLarge
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyLarge
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyLarge
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyLarge
-                                                                      .fontStyle,
-                                                                ),
-                                                      );
-                                                    } else {
-                                                      return AutoSizeText(
-                                                        '${getJsonField(
-                                                          itemItem,
-                                                          r'''$.name''',
-                                                        ).toString()} закончился, поэтому мы не можем заказать его. Вернитесь в меню и снова зайдите в просмотр заказов.',
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        style:
+                                                                .fontWeight,
+                                                        fontStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
-                                                                          .forum(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .tertiary,
-                                                                  fontSize:
-                                                                      10.0,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                      );
-                                                    }
-                                                  },
+                                                                .bodyLarge
+                                                                .fontStyle,
+                                                      ),
                                                 ),
                                                 Container(
                                                   width: 0.0,

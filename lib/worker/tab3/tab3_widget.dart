@@ -279,7 +279,7 @@ class _Tab3WidgetState extends State<Tab3Widget> {
                                               ),
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .secondaryText,
+                                                      .primaryText,
                                               letterSpacing: 0.0,
                                               fontWeight:
                                                   FlutterFlowTheme.of(context)
@@ -308,7 +308,7 @@ class _Tab3WidgetState extends State<Tab3Widget> {
                                               ),
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .secondaryText,
+                                                      .primaryText,
                                               letterSpacing: 0.0,
                                               fontWeight:
                                                   FlutterFlowTheme.of(context)
@@ -524,7 +524,7 @@ class _Tab3WidgetState extends State<Tab3Widget> {
                                                                 ),
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .secondaryText,
+                                                                    .primaryText,
                                                                 fontSize: 24.0,
                                                                 letterSpacing:
                                                                     0.0,
@@ -559,7 +559,7 @@ class _Tab3WidgetState extends State<Tab3Widget> {
                                                                 ),
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .secondaryText,
+                                                                    .primaryText,
                                                                 letterSpacing:
                                                                     0.0,
                                                                 fontWeight: FlutterFlowTheme.of(
