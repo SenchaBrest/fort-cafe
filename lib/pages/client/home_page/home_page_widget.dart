@@ -272,7 +272,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                             .width),
                                                         0.0,
                                                       ),
-                                                      0.0),
+                                                      30.0),
                                               child: Builder(
                                                 builder: (context) {
                                                   final items =
