@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class SignUpModel extends FlutterFlowModel<SignUpWidget> {
   ///  Local state fields for this component.
 
-  int? miniOrderCounter = 0;
+  int miniOrderCounter = 0;
 
   ///  State fields for stateful widgets in this component.
 

@@ -837,6 +837,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
               Expanded(
                 child: FFButtonWidget(
                   onPressed: () async {
+                    _model.miniOrderCounter = 0;
                     if (_model.switchValue!) {
                       if (_model.formKey2.currentState == null ||
                           !_model.formKey2.currentState!.validate()) {
@@ -855,23 +856,21 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                             widget.cart!.map((e) => e.toString()).toList()),
                         'orderId': _model.order1?.id,
                       });
-                      for (int loop1Index = 0;
-                          loop1Index < widget.cart!.length;
-                          loop1Index++) {
-                        final currentLoop1Item = widget.cart![loop1Index];
+                      while (_model.miniOrderCounter < widget.cart!.length) {
                         await MiniOrdersTable().insert({
                           'orderId': _model.order1?.id,
                           'itemId': getJsonField(
                             widget.cart
-                                ?.elementAtOrNull(_model.miniOrderCounter!),
+                                ?.elementAtOrNull(_model.miniOrderCounter),
                             r'''$.id''',
                           ).toString(),
                           'quantity': getJsonField(
                             widget.cart
-                                ?.elementAtOrNull(_model.miniOrderCounter!),
+                                ?.elementAtOrNull(_model.miniOrderCounter),
                             r'''$.count''',
                           ),
                         });
+                        _model.miniOrderCounter = _model.miniOrderCounter + 1;
                       }
                       Navigator.pop(context);
                     } else {
@@ -923,23 +922,21 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                             widget.cart!.map((e) => e.toString()).toList()),
                         'orderId': _model.order2?.id,
                       });
-                      for (int loop1Index = 0;
-                          loop1Index < widget.cart!.length;
-                          loop1Index++) {
-                        final currentLoop1Item = widget.cart![loop1Index];
+                      while (_model.miniOrderCounter < widget.cart!.length) {
                         await MiniOrdersTable().insert({
                           'orderId': _model.order2?.id,
                           'itemId': getJsonField(
                             widget.cart
-                                ?.elementAtOrNull(_model.miniOrderCounter!),
+                                ?.elementAtOrNull(_model.miniOrderCounter),
                             r'''$.id''',
                           ).toString(),
                           'quantity': getJsonField(
                             widget.cart
-                                ?.elementAtOrNull(_model.miniOrderCounter!),
+                                ?.elementAtOrNull(_model.miniOrderCounter),
                             r'''$.count''',
                           ),
                         });
+                        _model.miniOrderCounter = _model.miniOrderCounter + 1;
                       }
                       Navigator.pop(context);
                     }
