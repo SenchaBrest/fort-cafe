@@ -31,7 +31,4 @@ class UsersRow extends SupabaseDataRow {
 
   String get role => getField<String>('role')!;
   set role(String value) => setField<String>('role', value);
-
-  String? get colorBadge => getField<String>('color_badge');
-  set colorBadge(String? value) => setField<String>('color_badge', value);
 }

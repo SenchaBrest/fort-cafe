@@ -155,7 +155,7 @@ class _Tab2WidgetState extends State<Tab2Widget> {
                                 child: Slidable(
                                   endActionPane: ActionPane(
                                     motion: const ScrollMotion(),
-                                    extentRatio: 0.75,
+                                    extentRatio: 0.5,
                                     children: [
                                       SlidableAction(
                                         label: ' Отдать',
@@ -215,39 +215,6 @@ class _Tab2WidgetState extends State<Tab2Widget> {
                                                     orderId:
                                                         listViewOrdersRow.id,
                                                     status: Status.canceled,
-                                                  ),
-                                                ),
-                                              );
-                                            },
-                                          ).then(
-                                              (value) => safeSetState(() {}));
-                                        },
-                                      ),
-                                      SlidableAction(
-                                        label: 'Удалить',
-                                        backgroundColor:
-                                            FlutterFlowTheme.of(context).error,
-                                        icon: Icons.delete_outline_rounded,
-                                        onPressed: (_) async {
-                                          await showModalBottomSheet(
-                                            isScrollControlled: true,
-                                            backgroundColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .primaryBackground,
-                                            isDismissible: false,
-                                            enableDrag: false,
-                                            context: context,
-                                            builder: (context) {
-                                              return Padding(
-                                                padding:
-                                                    MediaQuery.viewInsetsOf(
-                                                        context),
-                                                child: Container(
-                                                  height: double.infinity,
-                                                  child: ConfirmWidget(
-                                                    orderId:
-                                                        listViewOrdersRow.id,
-                                                    status: Status.delete,
                                                   ),
                                                 ),
                                               );
