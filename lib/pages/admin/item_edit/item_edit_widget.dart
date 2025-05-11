@@ -99,7 +99,7 @@ class _ItemEditWidgetState extends State<ItemEditWidget> {
                         fit: BoxFit.cover,
                         errorWidget: (context, error, stackTrace) =>
                             Image.asset(
-                          'assets/images/error_image.jpg',
+                          'assets/images/error_image.png',
                           width: 74.0,
                           height: 74.0,
                           fit: BoxFit.cover,

@@ -602,7 +602,7 @@ class _Tab3WidgetState extends State<Tab3Widget> {
                                                 errorBuilder: (context, error,
                                                         stackTrace) =>
                                                     Image.asset(
-                                                  'assets/images/error_image.jpg',
+                                                  'assets/images/error_image.png',
                                                   width: 64.0,
                                                   height: 64.0,
                                                   fit: BoxFit.cover,

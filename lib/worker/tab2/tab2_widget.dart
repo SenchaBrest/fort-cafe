@@ -2,7 +2,6 @@ import '/backend/schema/enums/enums.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/worker/confirm/confirm_widget.dart';
 import '/worker/mini_confirm/mini_confirm_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -152,165 +151,89 @@ class _Tab2WidgetState extends State<Tab2Widget> {
                                     path: '+${listViewOrdersRow.phone}',
                                   ));
                                 },
-                                child: Slidable(
-                                  endActionPane: ActionPane(
-                                    motion: const ScrollMotion(),
-                                    extentRatio: 0.5,
-                                    children: [
-                                      SlidableAction(
-                                        label: ' Отдать',
-                                        backgroundColor: Color(0xFF102C54),
-                                        icon: Icons.output_sharp,
-                                        onPressed: (_) async {
-                                          await showModalBottomSheet(
-                                            isScrollControlled: true,
-                                            backgroundColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .primaryBackground,
-                                            isDismissible: false,
-                                            enableDrag: false,
-                                            context: context,
-                                            builder: (context) {
-                                              return Padding(
-                                                padding:
-                                                    MediaQuery.viewInsetsOf(
-                                                        context),
-                                                child: Container(
-                                                  height: double.infinity,
-                                                  child: ConfirmWidget(
-                                                    orderId:
-                                                        listViewOrdersRow.id,
-                                                    status: Status.givenAway,
-                                                  ),
-                                                ),
-                                              );
-                                            },
-                                          ).then(
-                                              (value) => safeSetState(() {}));
-                                        },
-                                      ),
-                                      SlidableAction(
-                                        label: 'Отменить',
-                                        backgroundColor:
-                                            FlutterFlowTheme.of(context)
+                                child: Material(
+                                  color: Colors.transparent,
+                                  child: ListTile(
+                                    title: Text(
+                                      'Заказ ${listViewOrdersRow.number.toString()}',
+                                      style: FlutterFlowTheme.of(context)
+                                          .titleLarge
+                                          .override(
+                                            font: GoogleFonts.forum(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleLarge
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleLarge
+                                                      .fontStyle,
+                                            ),
+                                            color: FlutterFlowTheme.of(context)
                                                 .secondaryText,
-                                        icon: Icons.cancel,
-                                        onPressed: (_) async {
-                                          await showModalBottomSheet(
-                                            isScrollControlled: true,
-                                            backgroundColor:
+                                            letterSpacing: 0.0,
+                                            fontWeight:
                                                 FlutterFlowTheme.of(context)
-                                                    .primaryBackground,
-                                            isDismissible: false,
-                                            enableDrag: false,
-                                            context: context,
-                                            builder: (context) {
-                                              return Padding(
-                                                padding:
-                                                    MediaQuery.viewInsetsOf(
-                                                        context),
-                                                child: Container(
-                                                  height: double.infinity,
-                                                  child: ConfirmWidget(
-                                                    orderId:
-                                                        listViewOrdersRow.id,
-                                                    status: Status.canceled,
-                                                  ),
-                                                ),
-                                              );
-                                            },
-                                          ).then(
-                                              (value) => safeSetState(() {}));
-                                        },
-                                      ),
-                                    ],
-                                  ),
-                                  child: Material(
-                                    color: Colors.transparent,
-                                    child: ListTile(
-                                      title: Text(
-                                        'Заказ ${listViewOrdersRow.number.toString()}',
-                                        style: FlutterFlowTheme.of(context)
-                                            .titleLarge
-                                            .override(
-                                              font: GoogleFonts.forum(
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleLarge
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleLarge
-                                                        .fontStyle,
-                                              ),
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              letterSpacing: 0.0,
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleLarge
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleLarge
-                                                      .fontStyle,
-                                            ),
-                                      ),
-                                      subtitle: Text(
-                                        'от ${listViewOrdersRow.name} ${listViewOrdersRow.surname} (${listViewOrdersRow.totalPrice.toString()} р.)',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              font: GoogleFonts.forum(
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontStyle,
-                                              ),
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              letterSpacing: 0.0,
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontStyle,
-                                            ),
-                                      ),
-                                      tileColor: valueOrDefault<Color>(
-                                        () {
-                                          if (listViewOrdersRow.status ==
-                                              Status.pending.name) {
-                                            return FlutterFlowTheme.of(context)
-                                                .tertiary;
-                                          } else if (listViewOrdersRow.status ==
-                                              Status.inProgress.name) {
-                                            return FlutterFlowTheme.of(context)
-                                                .primary;
-                                          } else if (listViewOrdersRow.status ==
-                                              Status.completed.name) {
-                                            return FlutterFlowTheme.of(context)
-                                                .secondary;
-                                          } else {
-                                            return Color(0x00000000);
-                                          }
-                                        }(),
-                                        FlutterFlowTheme.of(context).tertiary,
-                                      ),
-                                      dense: false,
-                                      contentPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              12.0, 0.0, 12.0, 0.0),
+                                                    .titleLarge
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleLarge
+                                                    .fontStyle,
+                                          ),
                                     ),
+                                    subtitle: Text(
+                                      'от ${listViewOrdersRow.name} ${listViewOrdersRow.surname} (${listViewOrdersRow.totalPrice.toString()} р.)',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            font: GoogleFonts.forum(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
+                                    ),
+                                    tileColor: valueOrDefault<Color>(
+                                      () {
+                                        if (listViewOrdersRow.status ==
+                                            Status.pending.name) {
+                                          return FlutterFlowTheme.of(context)
+                                              .tertiary;
+                                        } else if (listViewOrdersRow.status ==
+                                            Status.inProgress.name) {
+                                          return FlutterFlowTheme.of(context)
+                                              .primary;
+                                        } else if (listViewOrdersRow.status ==
+                                            Status.completed.name) {
+                                          return FlutterFlowTheme.of(context)
+                                              .secondary;
+                                        } else {
+                                          return Color(0x00000000);
+                                        }
+                                      }(),
+                                      FlutterFlowTheme.of(context).tertiary,
+                                    ),
+                                    dense: false,
+                                    contentPadding:
+                                        EdgeInsetsDirectional.fromSTEB(
+                                            12.0, 0.0, 12.0, 0.0),
                                   ),
                                 ),
                               ),
@@ -601,7 +524,7 @@ class _Tab2WidgetState extends State<Tab2Widget> {
                                                 errorBuilder: (context, error,
                                                         stackTrace) =>
                                                     Image.asset(
-                                                  'assets/images/error_image.jpg',
+                                                  'assets/images/error_image.png',
                                                   width: 64.0,
                                                   height: 64.0,
                                                   fit: BoxFit.cover,

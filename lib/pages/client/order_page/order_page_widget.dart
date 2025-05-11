@@ -171,7 +171,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                                 errorBuilder: (context, error,
                                                         stackTrace) =>
                                                     Image.asset(
-                                                  'assets/images/error_image.jpg',
+                                                  'assets/images/error_image.png',
                                                   width: 60.0,
                                                   height: 60.0,
                                                   fit: BoxFit.cover,

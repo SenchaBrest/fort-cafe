@@ -388,7 +388,7 @@ class _MiniOrdersPageWidgetState extends State<MiniOrdersPageWidget> {
                                   fit: BoxFit.cover,
                                   errorBuilder: (context, error, stackTrace) =>
                                       Image.asset(
-                                    'assets/images/error_image.jpg',
+                                    'assets/images/error_image.png',
                                     width: 64.0,
                                     height: 64.0,
                                     fit: BoxFit.cover,
