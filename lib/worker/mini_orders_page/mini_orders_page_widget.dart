@@ -3,7 +3,6 @@ import '/backend/supabase/supabase.dart';
 import '/components/nothing_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/worker/mini_confirm/mini_confirm_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'dart:async';
 import 'package:flutter/material.dart';
@@ -12,7 +11,6 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'mini_orders_page_model.dart';
 export 'mini_orders_page_model.dart';
 
@@ -75,8 +73,6 @@ class _MiniOrdersPageWidgetState extends State<MiniOrdersPageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -235,50 +231,60 @@ class _MiniOrdersPageWidgetState extends State<MiniOrdersPageWidget> {
                                                 icon: FontAwesomeIcons
                                                     .exchangeAlt,
                                                 onPressed: (_) async {
-                                                  await showModalBottomSheet(
-                                                    isScrollControlled: true,
-                                                    backgroundColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .primaryBackground,
-                                                    isDismissible: false,
-                                                    enableDrag: false,
-                                                    context: context,
-                                                    builder: (context) {
-                                                      return GestureDetector(
-                                                        onTap: () {
-                                                          FocusScope.of(context)
-                                                              .unfocus();
-                                                          FocusManager.instance
-                                                              .primaryFocus
-                                                              ?.unfocus();
-                                                        },
-                                                        child: Padding(
-                                                          padding: MediaQuery
-                                                              .viewInsetsOf(
-                                                                  context),
-                                                          child: Container(
-                                                            height:
-                                                                double.infinity,
-                                                            child:
-                                                                MiniConfirmWidget(
-                                                              status: 'Взяться',
-                                                              nextStatus: Status
-                                                                  .inProgress
-                                                                  .name,
-                                                              workerId:
-                                                                  FFAppState()
-                                                                      .userId,
-                                                              miniOrderId:
-                                                                  listViewMiniOrdersRow
-                                                                      .id,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      );
-                                                    },
-                                                  ).then((value) =>
-                                                      safeSetState(() {}));
+                                                  if (listViewMiniOrdersRow
+                                                          .status ==
+                                                      Status.completed.name) {
+                                                    await MiniOrdersTable()
+                                                        .update(
+                                                      data: {
+                                                        'status':
+                                                            Status.pending.name,
+                                                      },
+                                                      matchingRows: (rows) =>
+                                                          rows.eqOrNull(
+                                                        'id',
+                                                        listViewMiniOrdersRow
+                                                            .id,
+                                                      ),
+                                                    );
+                                                  } else if (listViewMiniOrdersRow
+                                                          .status ==
+                                                      Status.pending.name) {
+                                                    await MiniOrdersTable()
+                                                        .update(
+                                                      data: {
+                                                        'status': Status
+                                                            .inProgress.name,
+                                                      },
+                                                      matchingRows: (rows) =>
+                                                          rows.eqOrNull(
+                                                        'id',
+                                                        listViewMiniOrdersRow
+                                                            .id,
+                                                      ),
+                                                    );
+                                                  } else if (listViewMiniOrdersRow
+                                                          .status ==
+                                                      Status.inProgress.name) {
+                                                    await MiniOrdersTable()
+                                                        .update(
+                                                      data: {
+                                                        'status': Status
+                                                            .completed.name,
+                                                      },
+                                                      matchingRows: (rows) =>
+                                                          rows.eqOrNull(
+                                                        'id',
+                                                        listViewMiniOrdersRow
+                                                            .id,
+                                                      ),
+                                                    );
+                                                  }
+
+                                                  await actions
+                                                      .hapticFeedbackForTelegramByType(
+                                                    'notification_success',
+                                                  );
                                                 },
                                               ),
                                             ],

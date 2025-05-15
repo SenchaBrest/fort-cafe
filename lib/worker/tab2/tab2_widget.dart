@@ -2,14 +2,12 @@ import '/backend/schema/enums/enums.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/worker/confirm/confirm_widget.dart';
-import '/worker/mini_confirm/mini_confirm_widget.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'tab2_model.dart';
 export 'tab2_model.dart';
@@ -47,8 +45,6 @@ class _Tab2WidgetState extends State<Tab2Widget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return StreamBuilder<List<ItemsRow>>(
       stream: FFAppState().items(
         requestFn: () => _model.containerSupabaseStream1 ??= SupaFlow.client
@@ -164,31 +160,20 @@ class _Tab2WidgetState extends State<Tab2Widget> {
                                                 .secondaryText,
                                         icon: Icons.cancel,
                                         onPressed: (_) async {
-                                          await showModalBottomSheet(
-                                            isScrollControlled: true,
-                                            backgroundColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .primaryBackground,
-                                            isDismissible: false,
-                                            enableDrag: false,
-                                            context: context,
-                                            builder: (context) {
-                                              return Padding(
-                                                padding:
-                                                    MediaQuery.viewInsetsOf(
-                                                        context),
-                                                child: Container(
-                                                  height: double.infinity,
-                                                  child: ConfirmWidget(
-                                                    orderId:
-                                                        listViewOrdersRow.id,
-                                                    status: Status.canceled,
-                                                  ),
-                                                ),
-                                              );
+                                          await OrdersTable().update(
+                                            data: {
+                                              'status': Status.canceled.name,
                                             },
-                                          ).then(
-                                              (value) => safeSetState(() {}));
+                                            matchingRows: (rows) =>
+                                                rows.eqOrNull(
+                                              'id',
+                                              listViewOrdersRow.id,
+                                            ),
+                                          );
+                                          await actions
+                                              .hapticFeedbackForTelegramByType(
+                                            'notification_success',
+                                          );
                                         },
                                       ),
                                     ],
@@ -356,80 +341,64 @@ class _Tab2WidgetState extends State<Tab2Widget> {
                                                       icon: FontAwesomeIcons
                                                           .exchangeAlt,
                                                       onPressed: (_) async {
-                                                        await showModalBottomSheet(
-                                                          isScrollControlled:
-                                                              true,
-                                                          backgroundColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .primaryBackground,
-                                                          isDismissible: false,
-                                                          enableDrag: false,
-                                                          context: context,
-                                                          builder: (context) {
-                                                            return Padding(
-                                                              padding: MediaQuery
-                                                                  .viewInsetsOf(
-                                                                      context),
-                                                              child: Container(
-                                                                height: double
-                                                                    .infinity,
-                                                                child:
-                                                                    MiniConfirmWidget(
-                                                                  status: () {
-                                                                    if (itemsItem
-                                                                            .status ==
-                                                                        Status
-                                                                            .pending
-                                                                            .name) {
-                                                                      return 'Взяться';
-                                                                    } else if (itemsItem
-                                                                            .status ==
-                                                                        Status
-                                                                            .inProgress
-                                                                            .name) {
-                                                                      return 'Готов';
-                                                                    } else {
-                                                                      return 'Отменить';
-                                                                    }
-                                                                  }(),
-                                                                  nextStatus:
-                                                                      () {
-                                                                    if (itemsItem
-                                                                            .status ==
-                                                                        Status
-                                                                            .pending
-                                                                            .name) {
-                                                                      return Status
-                                                                          .inProgress
-                                                                          .name;
-                                                                    } else if (itemsItem
-                                                                            .status ==
-                                                                        Status
-                                                                            .inProgress
-                                                                            .name) {
-                                                                      return Status
-                                                                          .completed
-                                                                          .name;
-                                                                    } else {
-                                                                      return Status
-                                                                          .pending
-                                                                          .name;
-                                                                    }
-                                                                  }(),
-                                                                  workerId:
-                                                                      FFAppState()
-                                                                          .userId,
-                                                                  miniOrderId:
-                                                                      itemsItem
-                                                                          .id,
-                                                                ),
-                                                              ),
-                                                            );
-                                                          },
-                                                        ).then((value) =>
-                                                            safeSetState(
-                                                                () {}));
+                                                        if (itemsItem.status ==
+                                                            Status.completed
+                                                                .name) {
+                                                          await MiniOrdersTable()
+                                                              .update(
+                                                            data: {
+                                                              'status': Status
+                                                                  .pending.name,
+                                                            },
+                                                            matchingRows:
+                                                                (rows) => rows
+                                                                    .eqOrNull(
+                                                              'id',
+                                                              itemsItem.id,
+                                                            ),
+                                                          );
+                                                        } else if (itemsItem
+                                                                .status ==
+                                                            Status
+                                                                .pending.name) {
+                                                          await MiniOrdersTable()
+                                                              .update(
+                                                            data: {
+                                                              'status': Status
+                                                                  .inProgress
+                                                                  .name,
+                                                            },
+                                                            matchingRows:
+                                                                (rows) => rows
+                                                                    .eqOrNull(
+                                                              'id',
+                                                              itemsItem.id,
+                                                            ),
+                                                          );
+                                                        } else if (itemsItem
+                                                                .status ==
+                                                            Status.inProgress
+                                                                .name) {
+                                                          await MiniOrdersTable()
+                                                              .update(
+                                                            data: {
+                                                              'status': Status
+                                                                  .completed
+                                                                  .name,
+                                                            },
+                                                            matchingRows:
+                                                                (rows) => rows
+                                                                    .eqOrNull(
+                                                              'id',
+                                                              itemsItem.id,
+                                                            ),
+                                                          );
+                                                        }
+
+                                                        await actions
+                                                            .hapticFeedbackForTelegramByType(
+                                                          'notification_success',
+                                                        );
                                                       },
                                                     ),
                                                   ],
