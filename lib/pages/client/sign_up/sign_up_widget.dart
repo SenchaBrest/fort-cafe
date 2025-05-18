@@ -851,11 +851,6 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                         'surname': _model.textFieldSurnameTextController1.text,
                         'phone': _model.textFieldPhoneTextController1.text,
                       });
-                      await SummariesTable().insert({
-                        'summary': functions.formatOrderSummary(
-                            widget.cart!.map((e) => e.toString()).toList()),
-                        'orderId': _model.order1?.id,
-                      });
                       while (_model.miniOrderCounter < widget.cart!.length) {
                         await MiniOrdersTable().insert({
                           'orderId': _model.order1?.id,
@@ -872,6 +867,11 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                         });
                         _model.miniOrderCounter = _model.miniOrderCounter + 1;
                       }
+                      await SummariesTable().insert({
+                        'summary': functions.formatOrderSummary(
+                            widget.cart!.map((e) => e.toString()).toList()),
+                        'orderId': _model.order1?.id,
+                      });
                       Navigator.pop(context);
                     } else {
                       if (_model.formKey1.currentState == null ||
@@ -917,11 +917,6 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                         'surname': _model.textFieldSurnameTextController2.text,
                         'phone': _model.textFieldPhoneTextController2.text,
                       });
-                      await SummariesTable().insert({
-                        'summary': functions.formatOrderSummary(
-                            widget.cart!.map((e) => e.toString()).toList()),
-                        'orderId': _model.order2?.id,
-                      });
                       while (_model.miniOrderCounter < widget.cart!.length) {
                         await MiniOrdersTable().insert({
                           'orderId': _model.order2?.id,
@@ -938,6 +933,11 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                         });
                         _model.miniOrderCounter = _model.miniOrderCounter + 1;
                       }
+                      await SummariesTable().insert({
+                        'summary': functions.formatOrderSummary(
+                            widget.cart!.map((e) => e.toString()).toList()),
+                        'orderId': _model.order2?.id,
+                      });
                       Navigator.pop(context);
                     }
 
